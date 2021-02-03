@@ -1,21 +1,21 @@
 <template>
-  <b-navbar wrapper-class="container" spaced shadow="true">
+  <b-navbar wrapper-class="container" spaced shadow="true" fixed-top>
       <template #brand>
-          <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          <b-navbar-item href="/">
               <img
                   src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
               >
            </b-navbar-item>
       </template>
       <template #start>
-        <b-navbar-item href="#">
+        <b-navbar-item href="#about">
           Over ons
         </b-navbar-item>
-        <b-navbar-item href="#">
-          Contact
-        </b-navbar-item>
-        <b-navbar-item href="#">
+        <b-navbar-item href="#donate">
           Doneren
+        </b-navbar-item>
+        <b-navbar-item href="#contact">
+          Contact
         </b-navbar-item>
       </template>
       <template #end>

@@ -8,7 +8,7 @@
             <p class="subtitle">
                 {{ description }}
             </p>
-            <b-button type="is-primary is-large">
+            <b-button type="is-primary">
                 <strong>Start nu gratis</strong>
             </b-button>
         </div>
