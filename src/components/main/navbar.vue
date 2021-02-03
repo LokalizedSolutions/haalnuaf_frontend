@@ -3,7 +3,7 @@
       <template #brand>
           <b-navbar-item href="/">
               <img
-                  src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
+                  class="image is-32x32" src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
               >
            </b-navbar-item>
       </template>

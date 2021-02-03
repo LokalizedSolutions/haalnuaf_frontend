@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <navbar/>
-    <hero title="Haalnuaf" description="Haalnuaf.nl is het platform waarmee U als winkeleigenaar de lockdown doorkomt, wij bieden een compleet webshop systeem aan waar U gemakkelijk uw product in invoert en waarmee u de klant de mogelijkheid geeft om ze te bestellen."/>
+    <hero title="Haalnuaf" description="Haalnuaf.nl is het platform waarmee u als winkeleigenaar deze verschrikkelijke lockdown doorkomt. Wij bieden een compleet webshop systeem aan gericht op afhalen. In een paar simpele stappen heeft u uw eigen webshop in elkaar gezet. U voegt producten toe, en bent klaar voor uw lockdown-opening. Klanten kunnen de producten bestellen en zeggen wanneer ze deze willen afhalen. De klant en u ontvangen allebei een mailtje over de bestelling. Als de bestelling is behandeld vinkt u dit aan, en wordt de bestelling automatisch uit ons systeem verwijderd zodat er niemand last heeft van privacy schending. En het beste van dit alles? Het is compleet gratis!"/>
     <about/>
     <donate/>
     <contact/>

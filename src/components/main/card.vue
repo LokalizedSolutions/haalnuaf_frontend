@@ -1,9 +1,21 @@
 <template>
-    <div class="card column">
-        <div class="card-content">
-            <div class="content">
-                <h3 class="subtitle">Waarom ons platform?</h3>
-                <p>Omdat wij cool zijn</p>
+    <div style="height: 100%">
+        <div class="card equal-height">
+            <div class="card-content">
+                <div class="content">
+                    <h3 class="subtitle">{{ title }}</h3>
+                    <p>{{ description }}</p>
+                    <div v-if="link">
+                        <a :href="link">
+                            <b-button type="is-primary">
+                                <strong>{{ button }}</strong>
+                                <template v-if="pack">
+                                    <b-icon :pack="pack" :icon="icon"></b-icon>
+                                </template>
+                            </b-button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -11,6 +23,14 @@
 
 <script>
 export default {
-    name: "card"
+    name: "card",
+    props: {
+        title: String,
+        description: String,
+        link: String,
+        pack: String,
+        icon: String,
+        button: String
+    }
 }
 </script>

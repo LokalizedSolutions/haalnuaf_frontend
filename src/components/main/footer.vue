@@ -10,6 +10,6 @@
 
 <script>
 export default {
-    name: 'foot'
+    name: 'foot',
 }
 </script>
