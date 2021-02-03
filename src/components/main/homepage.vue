@@ -1,20 +1,19 @@
 <template>
   <div class="homepage">
     <navbar/>
-    <h1>{{ msg }}</h1>
+    <hero title="Haalnuaf" description="Haalnuaf.nl is het platform waarmee U als winkeleigenaar de lockdown doorkomt, wij bieden een compleet webshop systeem aan waar U gemakkelijk uw product in invoert en waarmee u de klant de mogelijkheid geeft om ze te bestellen."/>
   </div>
 </template>
 
 <script>
 import navbar from './navbar.vue'
+import hero from './hero.vue'
 
 export default {
   name: 'homepage',
-  props: {
-    msg: String
-  },
   components: {
-    navbar
+    navbar,
+    hero
   }
 }
 </script>

@@ -1,10 +1,9 @@
 <template>
-  <b-navbar spaced shadow="true">
+  <b-navbar wrapper-class="container" spaced shadow="true">
       <template #brand>
           <b-navbar-item tag="router-link" :to="{ path: '/' }">
               <img
-                  src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                  alt="Lightweight UI components for Vue.js based on Bulma"
+                  src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
               >
            </b-navbar-item>
       </template>
@@ -23,9 +22,9 @@
         <b-navbar-item tag="div">
           <div class="buttons">
             <a class="button is-primary">
-              <strong>Registreren</strong>
+              <strong>Maak uw webshop</strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-white">
               Inloggen
             </a>
           </div>
