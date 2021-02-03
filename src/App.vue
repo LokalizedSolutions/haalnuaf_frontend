@@ -16,15 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
-/*colors*/
-$primary: #6D28D9;
-$link: $primary;
-$black: #1F2937;
-
-/*navbar*/
-$navbar-item-hover-background-color: none;
-$navbar-box-shadow-size: 0 2px 0px 0; 
-
+// import own scss utitily file
+@import "./assets/scss/style.scss";
+// import scss files (buefy and bulma)
 @import "/node_modules/bulma/sass/utilities/_all";
 @import "/node_modules/bulma";
 @import "/node_modules/buefy/src/scss/buefy";
