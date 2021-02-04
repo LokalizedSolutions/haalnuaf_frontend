@@ -1,7 +1,7 @@
 <template>
   <b-navbar wrapper-class="container" spaced shadow="true" fixed-top>
       <template #brand>
-          <b-navbar-item href="/">
+          <b-navbar-item tag="router-link" :to="{ path : '/'}">
               <img
                   class="image is-32x32" src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
               >
