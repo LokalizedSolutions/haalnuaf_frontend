@@ -5,17 +5,17 @@
                 <div class="content">
                     <h3 class="subtitle">{{ title }}</h3>
                     <p>{{ description }}</p>
-                    <div v-if="link">
-                        <a :href="link">
-                            <b-button type="is-primary">
-                                <strong>{{ button }}</strong>
-                                <template v-if="pack">
-                                    <b-icon :pack="pack" :icon="icon"></b-icon>
-                                </template>
-                            </b-button>
-                        </a>
-                    </div>
                 </div>
+            </div>
+            <div v-if="link" class="button-box">
+                <a :href="link">
+                    <b-button type="is-primary">
+                        <strong>{{ button }}</strong>
+                        <template v-if="pack">
+                            <b-icon :pack="pack" :icon="icon"></b-icon>
+                        </template>
+                    </b-button>
+                </a>
             </div>
         </div>
     </div>

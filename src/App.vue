@@ -33,4 +33,9 @@ export default {
 .equal-height .card-content {
   flex: auto;
 }
+
+.button-box {
+  margin-bottom: 3vh;
+  padding-left: 1.5rem;
+}
 </style>
