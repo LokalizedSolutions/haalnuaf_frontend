@@ -16,5 +16,8 @@ module.exports = {
               }
             ]
           }
+    },
+    devServer: { 
+      proxy: 'https://dev-api.haalnuaf.nl/' 
     }
   }

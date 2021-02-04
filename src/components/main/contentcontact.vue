@@ -35,7 +35,8 @@ export default {
             name: null,
             mail: null,
             message: null,
-            success: []
+            success: [],
+            date: null,
         }
     },
     methods: {
@@ -65,8 +66,8 @@ export default {
             }
 
             if(!this.errors.length) {
-                this.success.push('Gelukt'); 
-                // Going to fix this later on
+                this.sendMail(this.name, this.mail, this.message)
+                // Set everything in form back to null.
                 this.name = null;
                 this.mail = null;
                 this.message = null;
@@ -79,6 +80,15 @@ export default {
         validEmail: function(email) {
             var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
+        },
+        // sendMail function
+        sendMail: function(name, mail, message) {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            // Send axios request (axios is under this.$http)
+            this.$http.post("https://dev-api.haalnuaf.nl/mail", { key: this.key, time: this.date, email: mail, name: name, message: message })
+                .then(response => this.success.push('Gelukt' + response))
+                .catch(error => this.errors.push('Er is iets fout gegaan met onze backend, probeer het later opnieuw. Statuscode: ' + error.response.data.status));
         }
     }
 }
