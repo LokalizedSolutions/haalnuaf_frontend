@@ -6,10 +6,12 @@ Vue.use(VueRouter)
 // Routing
 import dashboard from './components/dashboard/dashboard.vue';
 import homepage from './components/main/homepage.vue';
+import error from './components/error.vue';
 
 const routes = [
   { path: '/', component: homepage },
-  { path: '/dashboard', component: dashboard }
+  { path: '/dashboard', component: dashboard },
+  { path: '*', name: '404', component: error }
 ]
 
 const router = new VueRouter({
