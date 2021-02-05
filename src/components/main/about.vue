@@ -3,7 +3,7 @@
         <div class="container" id="cardgen">
             <h1 class="title">Over haalnuaf.nl</h1>
             <div class="columns">
-                <div v-for="item in items" :key="item" class="column">
+                <div v-for="(item, index) in items" :key="index" class="column">
                     <card :title="item.title" :description="item.description" :link="item.link" :icon="item.icon" :pack="item.pack" :button="item.button"/>
                 </div>
             </div>
@@ -25,6 +25,7 @@ export default {
                 { title: 'Functies', description: 'Wij hebben diverse functies in ons systeem verwerkt, zo kan u uw eigen winkel layout kiezen. Deze winkel is dan te bereiken via winkelnaam.haalnuaf.nl of haalnuaf.nl/winkelnaam. Verder kunt u ook producten beheren, openingstijden wijzigen, bestellingen bekijken, zelf bestellingen handmatig toevoegen en in contact komen met een klant.', link: 'https://www.youtube.com', pack: 'fab', icon: 'youtube', button: 'Ontdek meer via youtube' },
                 { title: 'Wie zijn wij?', description: 'Wij zijn Noah Taheij en Justian Spijkerbosch, beide hobbymatig programmeur en student. Wij hebben haalnuaf.nl gebouwd om de lokale ondernemer te steunen en om hun een makkelijke technische oplossing te bieden op alle afhaalproblematiek.', icon: 'external-link-alt', pack: 'fas', link: 'https://www.youtube.com', button: 'Wie zijn wij?'}
             ]
+            
         }
     }
 }

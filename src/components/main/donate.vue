@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="title">Doneren</h1>
             <div class="columns">
-                <div v-for="item in items" :key="item" class="column">
+                <div v-for="(item, index) in items" :key="index" class="column">
                     <card :title="item.title" :description="item.description" :link="item.link" :icon="item.icon" :pack="item.pack" :button="item.button"/>
                 </div>
             </div>
