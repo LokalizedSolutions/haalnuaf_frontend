@@ -7,17 +7,6 @@
               >
            </b-navbar-item>
       </template>
-      <template #start>
-        <b-navbar-item href="#about">
-          Over ons
-        </b-navbar-item>
-        <b-navbar-item href="#donate">
-          Doneren
-        </b-navbar-item>
-        <b-navbar-item href="#contact">
-          Contact
-        </b-navbar-item>
-      </template>
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
@@ -35,6 +24,6 @@
 
 <script>
 export default {
-  name: 'navbar'
+  name: 'authnavbar'
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <section class="hero is-black">
     <div class="hero-body">
-        <div class="container">
+        <div class="container" style="margin-top: 1vh;">
             <p class="title">
                 {{ title }}
             </p>
             <p class="subtitle">
                 {{ description }}
             </p>
-            <b-button type="is-primary">
+            <b-button tag="router-link" to="/registreren" type="is-primary">
                 <strong>Start nu gratis</strong>
             </b-button>
         </div>

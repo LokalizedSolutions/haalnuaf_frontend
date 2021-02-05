@@ -7,10 +7,19 @@ Vue.use(VueRouter)
 import dashboard from './components/dashboard/dashboard.vue';
 import homepage from './components/main/homepage.vue';
 import error from './components/error.vue';
+// Routing AUTH
+import login from './components/login.vue';
+import passwordforget from './components/passwordforget.vue';
+import signup from './components/signup.vue';
 
 const routes = [
   { path: '/', component: homepage },
   { path: '/dashboard', component: dashboard },
+  // AUTH routes
+  { path: '/login', component: login },
+  { path: '/registreren', component: signup },
+  { path: '/wachtwoord_vergeten', component: passwordforget },
+  // 404 generation for each none declared route
   { path: '*', name: '404', component: error }
 ]
 
