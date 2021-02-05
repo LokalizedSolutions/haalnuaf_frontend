@@ -10,7 +10,7 @@
                         <div class="card-content">
                             <div class="content">
                                 <div v-if="back_errors.length" style="margin-bottom: 1vh;">
-                                    <p class="has-text-danger">Hey, er zijn wat fouten opgetreden bij het verwerken van uw contactformulier!
+                                    <p class="has-text-danger">Hey, er zijn wat fouten opgetreden!
                                         <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
                                     </p>
                                 </div>
