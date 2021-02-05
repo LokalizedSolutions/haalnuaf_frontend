@@ -18,7 +18,15 @@
                                     <b-field label="Emailadres" :type="{'is-danger': true, 'is-danger': errors.has('mail')}" :message="errors.first('mail')">
                                         <b-input v-validate="'required|email'" name="mail" type="mail" v-model="mail" placeholder="Vul hier uw emailadres in..." icon="envelope" icon-pack="fas"></b-input>
                                     </b-field>
-            
+
+                                    <b-field label="Bedrijfsnaam" :type="{'is-danger': true, 'is-danger': errors.has('companyname')}" :message="errors.first('companyname')">
+                                        <b-input v-validate="'required'" name="companyname" type="text" v-model="companyname" placeholder="Vul hier uw bedrijfsnaam in..." icon="signature" icon-pack="fas"></b-input>
+                                    </b-field>
+
+                                    <b-field label="Winkelnaam" :type="{'is-danger': true, 'is-danger': errors.has('storename')}" :message="errors.first('storename')">
+                                        <b-input v-validate="{ required: true, regex: /[a-z0-9.-]/ }" name="storename" type="text" v-model="storename" placeholder="Vul hier uw winkelnaam in..." icon="store" icon-pack="fas"></b-input>
+                                    </b-field>
+                                    
                                     <b-field label="Uw wachtwoord" :type="{'is-danger': true, 'is-danger': errors.has('password')}" :message="errors.first('password')"> 
                                         <b-input v-validate="'required|min:8|max:50'" v-model="password" type="password" name="password" placeholder="Vul hier uw wachtwoord in..." icon="key" icon-pack="fas"></b-input>
                                     </b-field>
@@ -47,23 +55,47 @@ export default {
         return {
             password: '',
             mail: '',
+            companyname: '',
+            storename: '',
+            date: '',
+            key: '',
             back_errors: []
         }
     },
     methods: {
-        checkForm: function() {
+        checkForm() {
             // Set backend errors to null
             this.back_errors = [];
 
             this.$validator.validateAll().then((result) => {
                 if (result) {
-                    this.$validator.reset();
-                    return true;
+                    this.apiCall(this.mail, this.companyname, this.storename, this.password);
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.')
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
                 }
             });
         },
+        // Create user
+        apiCall(mail, companyname, storename, password) {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            companyname = companyname.trim(); 
+            // Send axios request (axios is under this.$http)
+            this.$http.post("https://dev-api.haalnuaf.nl/users/create", { key: this.key, time: this.date, email: mail, company: companyname, storename: storename, password: password })
+                /* eslint-disable no-unused-vars */
+                .then(async response => {
+                    await this.$router.push({ name: 'login' });
+                })
+                .catch(error => {
+                    if(error) {
+                        if(error.response.data.msg !== undefined) {
+                            this.back_errors.push('Bericht: ' + error.response.data.msg);
+                        } else {
+                            this.back_errors.push('Statuscode: ' + error.response.data.status);
+                        }
+                    }
+                });
+        }
     }
 }
 </script>

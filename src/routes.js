@@ -13,14 +13,38 @@ import passwordforget from './components/passwordforget.vue';
 import signup from './components/signup.vue';
 
 const routes = [
-  { path: '/', component: homepage },
-  { path: '/dashboard', component: dashboard },
+  { 
+    path: '/',
+    name: 'home', 
+    component: homepage
+  },
+  { 
+    path: '/dashboard',
+    name: 'dashboard',
+    component: dashboard
+  },
   // AUTH routes
-  { path: '/login', component: login },
-  { path: '/registreren', component: signup },
-  { path: '/wachtwoord_vergeten', component: passwordforget },
+  { 
+    path: '/login', 
+    name: 'login',
+    component: login 
+  },
+  { 
+    path: '/registreren',
+    name: 'signup',
+    component: signup 
+  },
+  { 
+    path: '/wachtwoord_vergeten', 
+    name: 'forgot_password',
+    component: passwordforget 
+  },
   // 404 generation for each none declared route
-  { path: '*', name: '404', component: error }
+  { 
+    path: '*', 
+    name: '404', 
+    component: error 
+  }
 ]
 
 const router = new VueRouter({
