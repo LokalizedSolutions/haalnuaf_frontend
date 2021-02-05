@@ -22,9 +22,17 @@
                                     <b-field label="Uw wachtwoord" :type="{'is-danger': true, 'is-danger': errors.has('password')}" :message="errors.first('password')"> 
                                         <b-input v-validate="'required|min:8|max:50'" v-model="password" type="password" name="password" placeholder="Vul hier uw wachtwoord in..." icon="key" icon-pack="fas"></b-input>
                                     </b-field>
-                                    <p class="control">
-                                        <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Inloggen" type="is-primary" native-type="submit" value="submit"/>
-                                    </p>
+
+                                    <b-field grouped position="is-right">
+                                        <router-link to="/wachtwoord_vergeten">
+                                            <p class="control">
+                                                <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Wachtwoord vergeten" type="is-white"/>
+                                            </p>
+                                        </router-link>
+                                        <p class="control">
+                                            <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Inloggen" type="is-primary" native-type="submit" value="submit"/>
+                                        </p>
+                                    </b-field>
                                 </form>
                             </div>
                         </div>
