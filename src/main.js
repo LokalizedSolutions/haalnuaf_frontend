@@ -13,6 +13,9 @@ Vue.config.productionTip = false
 // Router
 import router from './routes'
 
+// Store
+import store from './store/store.js'
+
 // Mixin
 Vue.mixin({
   methods: {
@@ -29,5 +32,6 @@ Vue.mixin({
 // Mount app component to vue
 new Vue({
   router, 
+  store,
   render: h => h(App),
 }).$mount('#app')

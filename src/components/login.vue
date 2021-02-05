@@ -45,6 +45,7 @@
 
 <script>
 import authnavbar from './auth_navbar.vue'
+import { mapMutations } from 'vuex'
 
 export default {
     name: "login",
@@ -59,19 +60,41 @@ export default {
         }
     },
     methods: {
-        checkForm: function() {
+        ...mapMutations(["setToken"]),
+        checkForm() {
             // Set backend errors to null
             this.back_errors = [];
 
             this.$validator.validateAll().then((result) => {
                 if (result) {
-                    this.$validator.reset();
-                    return true;
+                    this.apiCall(this.mail, this.password);
                 } else {
                     this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
                 }
             });
         },
+        // Api call
+        apiCall(mail, password) {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            // Actual request
+            this.$http.post("https://dev-api.haalnuaf.nl/users/login", { key: this.key, time: this.date, email: mail, password: password })
+                /* eslint-disable no-unused-vars */
+                .then(async response => {
+                    const token = await response.data.token; 
+                    this.setToken(token);
+                    this.$router.push({ name: "dashboard"}); 
+                })
+                .catch(error => {
+                    if(error) {
+                        if(error.response.data.msg !== undefined) {
+                            this.back_errors.push('Bericht: ' + error.response.data.msg);
+                        } else {
+                            this.back_errors.push('Statuscode: ' + error.response.data.status);
+                        }
+                    }
+                });
+        }
     }
 }
 </script>
