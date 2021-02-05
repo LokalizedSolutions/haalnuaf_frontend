@@ -33,4 +33,9 @@ export default {
   margin-bottom: 3vh;
   padding-left: 1.5rem;
 }
+
+.control.has-icons-left .icon,
+.control.has-icons-right .icon {
+  pointer-events: auto !important;
+}
 </style>

@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Buefy from 'buefy'
 import App from './App.vue'
 import axios from 'axios'
+import VeeValidate from 'vee-validate'
 
 // Vue initialization 
 Vue.use(Buefy)
+Vue.use(VeeValidate)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
