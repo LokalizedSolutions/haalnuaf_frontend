@@ -68,7 +68,7 @@ export default {
                     this.$validator.reset();
                     return true;
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.')
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
                 }
             });
         },

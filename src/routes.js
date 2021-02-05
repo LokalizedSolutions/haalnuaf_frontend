@@ -13,6 +13,7 @@ import passwordforget from './components/passwordforget.vue';
 import signup from './components/signup.vue';
 
 const routes = [
+  // MAIN routes
   { 
     path: '/',
     name: 'home', 

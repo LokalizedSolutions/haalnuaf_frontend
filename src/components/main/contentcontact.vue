@@ -56,7 +56,7 @@ export default {
                     this.mail = '';
                     this.message = '';
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.')
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
                 }
             });
         },

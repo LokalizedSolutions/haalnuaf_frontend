@@ -13,10 +13,6 @@ Vue.config.productionTip = false
 // Router
 import router from './routes'
 
-// Api
-import hash from './api'
-Vue.prototype.$hash = hash
-
 // Mixin
 Vue.mixin({
   methods: {
