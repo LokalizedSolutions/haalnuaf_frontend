@@ -3,11 +3,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
-    name: "dashboard",
-    methods: {
-        ...mapGetters(["isLoggedIn"]),
-    }
+    name: "dashboard"
 }
 </script>
