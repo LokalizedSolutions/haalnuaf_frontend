@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './store/store.js'
 
 Vue.use(VueRouter)
 
@@ -17,34 +18,37 @@ const routes = [
   { 
     path: '/',
     name: 'home', 
-    component: homepage
+    component: homepage,
   },
   { 
     path: '/dashboard',
     name: 'dashboard',
-    component: dashboard
+    component: dashboard,
+    meta: {
+      requiresAuth: true
+    }
   },
   // AUTH routes
   { 
     path: '/login', 
     name: 'login',
-    component: login 
+    component: login
   },
   { 
     path: '/registreren',
     name: 'signup',
-    component: signup 
+    component: signup
   },
   { 
     path: '/wachtwoord_vergeten', 
     name: 'forgot_password',
-    component: passwordforget 
+    component: passwordforget
   },
   // 404 generation for each none declared route
   { 
     path: '*', 
     name: '404', 
-    component: error 
+    component: error
   }
 ]
 
@@ -52,6 +56,18 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
 })
   
 export default router

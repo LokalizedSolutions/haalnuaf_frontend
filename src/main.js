@@ -7,7 +7,15 @@ import VeeValidate from 'vee-validate'
 // Vue initialization 
 Vue.use(Buefy)
 Vue.use(VeeValidate)
+
+// Axios and token setup
 Vue.prototype.$http = axios
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
+// Vue config things
 Vue.config.productionTip = false
 
 // Router

@@ -7,11 +7,11 @@ Vue.use(Vuex)
 // New store
 const store = new Vuex.Store({
     state: {
-        token: null
+        token: localStorage.getItem('token') || ''
     },
     mutations: {
         setToken(state, token) {
-            state.token = token; 
+            state.token = localStorage.setItem('token', token); 
         }
     },
     getters: {
