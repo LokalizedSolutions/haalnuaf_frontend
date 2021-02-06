@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>Haalnuaf.nl</strong> is gemaakt door <a href="https://www.justian.dev">Justian Spijkerbosch</a> en <a href="https://ntaheij.dev"> Noah Taheij</a>.
+                <strong>Haalnuaf.nl</strong> is gemaakt door <a href="https://www.justian.dev">Lokalized Solutions</a>.
             </p>
         </div>
     </footer>
@@ -10,6 +10,6 @@
 
 <script>
 export default {
-    name: 'foot',
+    name: 'foot'
 }
 </script>
