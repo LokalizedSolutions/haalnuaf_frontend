@@ -8,7 +8,7 @@
            </b-navbar-item>
       </template>
       <template #start>
-        <b-navbar-item tag="router-link" :to="{ name: 'dashboard_products' }">
+        <b-navbar-item tag="router-link" :to="{ name: 'overviewProduct' }">
           Producten
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ name: 'dashboard_store' }">

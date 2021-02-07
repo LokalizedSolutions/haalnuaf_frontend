@@ -13,6 +13,9 @@ import signup from './components/signup.vue';
 // Dashboard
 import dashboard from './components/dashboard/dashboard.vue';
 import products from './components/dashboard/products.vue';
+import producten from './components/dashboard/products/products.vue'
+import editProduct from './components/dashboard/products/editProduct.vue'
+import createProduct from './components/dashboard/products/createProduct.vue'
 import orders from './components/dashboard/orders.vue';
 import settings from './components/dashboard/settings.vue';
 import stores from './components/dashboard/store.vue';
@@ -53,6 +56,23 @@ const routes = [
     path: '/dashboard/products',
     name: 'dashboard_products',
     component: products,
+    children: [
+      {
+        path: 'overview',
+        name: 'overviewProduct',
+        component: producten
+      },
+      {
+        path: 'edit',
+        name: 'editProduct',
+        component: editProduct
+      },
+      { 
+        path: 'create',
+        name: 'createProduct',
+        component: createProduct
+      }
+    ],
     meta: {
       requiresAuth: true
     }
@@ -75,7 +95,7 @@ const routes = [
     } 
   },
   { 
-    path: '/registreren',
+    path: '/signup',
     name: 'signup',
     component: signup,
     meta: {
@@ -83,7 +103,7 @@ const routes = [
     } 
   },
   { 
-    path: '/wachtwoord_vergeten', 
+    path: '/forgot_password', 
     name: 'forgot_password',
     component: passwordforget,
     meta: {

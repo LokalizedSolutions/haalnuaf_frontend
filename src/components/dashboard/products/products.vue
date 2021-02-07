@@ -14,7 +14,7 @@
 import productCard from './productCard.vue'
 
 export default {
-    name: "products", 
+    name: "producten", 
     components: {
         productCard
     }

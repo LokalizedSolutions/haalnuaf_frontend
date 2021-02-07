@@ -24,7 +24,7 @@
                                     </b-field>
 
                                     <b-field grouped position="is-right">
-                                        <router-link to="/wachtwoord_vergeten">
+                                        <router-link :to="{ name : 'forgot_password'}">
                                             <p class="control">
                                                 <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Wachtwoord vergeten" type="is-white"/>
                                             </p>

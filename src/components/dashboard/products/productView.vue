@@ -1,19 +1,19 @@
 <template>
     <div>
-        <topAction title="Uw producten" action="Nieuw product"/>
-        <products/>
+        <topAction title="Producten" actionOne="Alle producten" actionTwo="Nieuw product"/>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import topAction from './../level.vue';
-import products from './products.vue'
+import topAction from './levelProduct.vue';
+// import products from './products.vue'
 
 export default {
     name: "productView",
     components: {
         topAction,
-        products
+        // products
     }
 }
 </script>

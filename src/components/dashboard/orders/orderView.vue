@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import topAction from './../level.vue';
+import topAction from './levelOrder.vue';
 
 export default {
     name: "orderView",

@@ -10,10 +10,10 @@
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
-            <b-button tag="router-link" to="/registreren" class="button is-primary">
+            <b-button tag="router-link" :to="{ name: 'signup' }" class="button is-primary">
               <strong>Maak uw webshop</strong>
             </b-button>
-            <b-button tag="router-link" to="/login" class="button is-white">
+            <b-button tag="router-link" :to="{ name : 'login' }" class="button is-white">
               Inloggen
             </b-button>
           </div>
