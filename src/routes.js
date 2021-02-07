@@ -117,12 +117,10 @@ router.beforeEach((to, from, next) => {
   
   if(isAuth && !loggedIn) {
     next({ name: "login" });
-  }
-  if(isGuest && loggedIn) {
+  } else if(isGuest && loggedIn) {
     next({ name: "dashboard" });
-  }
-  else {
-    next()
+  } else {
+    next();
   }
 
 })
