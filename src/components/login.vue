@@ -83,7 +83,9 @@ export default {
                 .then(async response => {
                     const token = await response.data.token; 
                     this.setToken(token);
-                    this.$router.push({ path: "/dashboard" }); 
+                    this.$router.push({ name: "dashboard" }).catch((err) => {
+                        throw new Error(console.log(`Problem handling something: ${err}.`));
+                    });
                 })
                 .catch(error => {
                     if(error) {
