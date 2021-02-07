@@ -19,7 +19,7 @@
             </b-field>
             
             <b-field label="Uw bericht" :type="{'is-danger': true, 'is-danger': errors.has('message')}" :message="errors.first('message')">
-                <b-input v-validate="'required|min:50|max:1000'" name="message" v-model="message" type="textarea" placeholder="Vul hier uw naam + achternaam in..."></b-input>
+                <b-input v-validate="'required|min:25|max:1000'" name="message" v-model="message" type="textarea" placeholder="Vul hier uw bericht in..."></b-input>
             </b-field>
 
             <p class="control">

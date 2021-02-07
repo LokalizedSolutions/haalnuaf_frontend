@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>Haalnuaf.nl</strong> is gemaakt door <a href="https://www.justian.dev">Lokalized Solutions</a>.
+                <strong>Haalnuaf.nl</strong> is gemaakt door <a href="https://www.lokalized.nl">Lokalized Solutions</a>.
             </p>
         </div>
     </footer>

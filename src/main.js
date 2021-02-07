@@ -7,7 +7,6 @@ import VeeValidate from 'vee-validate'
 // Vue initialization 
 Vue.use(Buefy)
 Vue.use(VeeValidate)
-Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 // Router
@@ -15,6 +14,11 @@ import router from './routes'
 
 // Store
 import store from './store/store.js'
+
+// Axios
+const token = localStorage.getItem('token')
+axios.defaults.headers.common['Authorization'] = token
+Vue.prototype.$http = axios
 
 // Mixin
 Vue.mixin({

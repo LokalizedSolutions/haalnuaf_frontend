@@ -23,7 +23,7 @@
                 <b-navbar-item tag="router-link" :to="{ name: 'dashboard_settings' }">
                     Instellingen
                 </b-navbar-item>
-                <b-navbar-item href="#">
+                <b-navbar-item @click="logout">
                     Uitloggen
                 </b-navbar-item>
             </b-navbar-dropdown>
@@ -33,6 +33,14 @@
 
 <script>
 export default {
-  name: 'dashboardnav'
+  name: 'dashboardnav',
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      .then(() => {
+        this.$router.push('/')
+      })
+    }
+  }
 }
 </script>

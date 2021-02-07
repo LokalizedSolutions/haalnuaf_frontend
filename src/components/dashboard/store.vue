@@ -12,7 +12,7 @@ import foot from './../main/footer.vue'
 import hero from './hero.vue'
 
 export default {
-    name: "store",
+    name: "stores",
     components: {
         dashboardnav,
         foot,

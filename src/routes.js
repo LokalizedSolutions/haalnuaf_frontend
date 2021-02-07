@@ -15,7 +15,7 @@ import dashboard from './components/dashboard/dashboard.vue';
 import products from './components/dashboard/products.vue';
 import orders from './components/dashboard/orders.vue';
 import settings from './components/dashboard/settings.vue';
-import store from './components/dashboard/store.vue';
+import stores from './components/dashboard/store.vue';
 
 const routes = [
   // MAIN routes
@@ -28,43 +28,67 @@ const routes = [
   { 
     path: '/dashboard',
     name: 'dashboard',
-    component: dashboard
+    component: dashboard,
+    meta: {
+      requiresAuth: true
+    }
   },
   { 
     path: '/dashboard_settings',
     name: 'dashboard_settings',
-    component: settings
+    component: settings,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/dashboard_orders',
     name: 'dashboard_orders',
-    component: orders
+    component: orders,
+    meta: {
+      requiresAuth: true
+    }
   },
   { 
     path: '/dashboard_products',
     name: 'dashboard_products',
-    component: products
+    component: products,
+    meta: {
+      requiresAuth: true
+    }
   },
   { 
     path: '/dashboard_store',
     name: 'dashboard_store',
-    component: store
+    component: stores,
+    meta: {
+      requiresAuth: true
+    }
   },
   // AUTH routes
   { 
     path: '/login', 
     name: 'login',
-    component: login 
+    component: login,
+    meta: {
+      requiresGuest: true
+    } 
   },
   { 
     path: '/registreren',
     name: 'signup',
-    component: signup 
+    component: signup,
+    meta: {
+      requiresGuest: true
+    } 
   },
   { 
     path: '/wachtwoord_vergeten', 
     name: 'forgot_password',
-    component: passwordforget 
+    component: passwordforget,
+    meta: {
+      requiresGuest: true
+    } 
   },
   // 404 generation for each none declared route
   { 
@@ -74,10 +98,57 @@ const routes = [
   }
 ]
 
+// Handle unauthorized access
+// Vuex store file import
+/* eslint-disable no-unused-vars */
+import store from './store/store.js'
+
+// Declare router
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+/* router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if(!store.getters.isLoggedIn) {
+      return next({ path: "/" })
+    } else {
+      return next(); 
+    }
+  } else {
+    return next();
+  }
+}) */
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = store.getters.isLoggedIn; 
+  const isAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isGuest = to.matched.some((record) => record.meta.requiresGuest);
+  
+  if(isAuth && !loggedIn) {
+    return next({ name: "login" });
+  }
+  next(); 
+
+  if(isGuest && loggedIn) {
+    return next({ name: "dashboard" });
+  }
+  next(); 
+  
 })
   
 export default router
