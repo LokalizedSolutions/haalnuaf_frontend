@@ -3,7 +3,7 @@
       <template #brand>
           <b-navbar-item tag="router-link" :to="{ path : '/dashboard'}">
               <img
-                  class="image is-32x32" src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
+                  class="image is-32x32" src="https://cdn.lokalized.nl/haalnuaf-images/logo"
               >
            </b-navbar-item>
       </template>
@@ -19,7 +19,7 @@
         </b-navbar-item>
       </template>
       <template #end>
-        <b-navbar-dropdown label="Username" right icon-pack="">
+        <b-navbar-dropdown :label="username" right>
                 <b-navbar-item tag="router-link" :to="{ name: 'dashboard_settings' }">
                     Instellingen
                 </b-navbar-item>
@@ -34,6 +34,11 @@
 <script>
 export default {
   name: 'dashboardnav',
+  data() {
+    return {
+      username: localStorage.getItem('username') || ''
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch('logout')

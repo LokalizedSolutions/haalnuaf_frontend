@@ -60,7 +60,7 @@ export default {
         }
     },
     methods: {
-        ...mapMutations(["setToken"]),
+        ...mapMutations(["setToken", "setUsername", "setId"]),
         checkForm() {
             // Set backend errors to null
             this.back_errors = [];
@@ -81,8 +81,12 @@ export default {
             this.$http.post("https://dev-api.haalnuaf.nl/users/login", { key: this.key, time: this.date, email: mail, password: password })
                 /* eslint-disable no-unused-vars */
                 .then(async response => {
-                    const token = await response.data.token; 
-                    this.setToken(token);
+                    const token = response.data.token; 
+                    const username = response.data.user.company;
+                    const id = response.data.user.id; 
+                    await this.setId(id);
+                    await this.setUsername(username);
+                    await this.setToken(token);
                     this.$router.push({ name: "dashboard" }).catch((err) => {
                         throw new Error(console.log(`Problem handling something: ${err}.`));
                     });

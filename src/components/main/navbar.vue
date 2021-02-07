@@ -3,7 +3,7 @@
       <template #brand>
           <b-navbar-item tag="router-link" :to="{ path : '/'}">
               <img
-                  class="image is-32x32" src="https://cdn.ntaheij.dev/lokalized/logo_icon.png"
+                  class="image is-32x32" src="https://cdn.lokalized.nl/haalnuaf-images/logo"
               >
            </b-navbar-item>
       </template>
