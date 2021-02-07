@@ -10,11 +10,9 @@
                         <p class="subtitle">
                             Hey. Het spijt ons maar deze pagina bestaat niet.
                         </p>
-                        <router-link to="/">
-                            <b-button type="is-primary is-large">
-                                Keer terug
-                            </b-button>
-                        </router-link>
+                        <b-button @click=onClick() type="is-primary is-large">
+                            Keer terug
+                        </b-button>
                     </div>
                     <div>
                         <img responsive rounded style="width: 256px" src="https://cdn.lokalized.nl/haalnuaf-images/notfound?v=1">
@@ -27,6 +25,11 @@
 
 <script>
 export default {
-    name: "error"
+    name: "error",
+    methods: {
+        onClick() {
+            this.$router.go(-1);
+        }
+    }
 }
 </script>
