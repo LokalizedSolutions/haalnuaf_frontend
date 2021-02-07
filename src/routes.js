@@ -34,7 +34,7 @@ const routes = [
     }
   },
   { 
-    path: '/dashboard_settings',
+    path: '/dashboard/settings',
     name: 'dashboard_settings',
     component: settings,
     meta: {
@@ -42,7 +42,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard_orders',
+    path: '/dashboard/orders',
     name: 'dashboard_orders',
     component: orders,
     meta: {
@@ -50,7 +50,7 @@ const routes = [
     }
   },
   { 
-    path: '/dashboard_products',
+    path: '/dashboard/products',
     name: 'dashboard_products',
     component: products,
     meta: {
@@ -58,7 +58,7 @@ const routes = [
     }
   },
   { 
-    path: '/dashboard_store',
+    path: '/dashboard/store',
     name: 'dashboard_store',
     component: stores,
     meta: {
@@ -118,10 +118,6 @@ router.beforeEach((to, from, next) => {
   if(isAuth && !loggedIn) {
     next({ name: "login" });
   }
-  else {
-    next() 
-  }
-
   if(isGuest && loggedIn) {
     next({ name: "dashboard" });
   }

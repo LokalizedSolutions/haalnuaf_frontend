@@ -18,6 +18,20 @@ import store from './store/store.js'
 // Axios
 const token = localStorage.getItem('token')
 axios.defaults.headers.common['Authorization'] = token
+// Axios interceptor (If JWT is expired)
+axios.interceptors.response.use(undefined, function (err) {
+  // eslint-disable-next-line no-unused-vars
+  return new Promise(function (resolve, reject) {
+    if (err.response.data.status === 499 && err.config && !err.config.__isRetryRequest) {
+      store.dispatch('logout')
+      .then(() => {
+        router.push('/login')
+      });
+    }
+    throw err;
+  });
+});
+
 Vue.prototype.$http = axios
 
 // Mixin
