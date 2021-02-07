@@ -30,7 +30,7 @@
                         </b-field>
                         <!--upload-->
                         <b-field label="Productfoto (optioneel)">
-                            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()">
+                            <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()">
                         </b-field>
                         <!--submit form-->
                         <p class="control">
@@ -54,6 +54,7 @@ export default {
             file: '',
             price: '',
             max: '',
+            img: [],
             id: localStorage.getItem('id') || '' 
         }
     },
@@ -64,24 +65,53 @@ export default {
 
             this.$validator.validateAll().then((result) => {
                 if (result) {
-                    this.apiCall(this.productName, this.productDescription, this.price, this.max);
+                    if(this.file) {
+                        this.fileSubmit(); 
+                    } else {
+                        this.apiCall(this.productName, this.productDescription, this.price, this.max);
+                    }
                 } else {
                     this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
                 }
             });
         },
-        apiCall(productName, productDescription, price, max) {
+        apiCall(productName, productDescription, price, max, photos) {
             this.date = Date.now();
             this.key = this.apiKey();
 
-            this.$http.post("https://dev-api.haalnuaf.nl/products/create", { key: this.key, time: this.date, storeid: this.id, name: productName, description: productDescription, price: price, max: max })
+            this.$http.post("https://dev-api.haalnuaf.nl/products/create", { key: this.key, time: this.date, storeid: this.id, name: productName, description: productDescription, price: price, max: max, photos: photos })
             .then(async response => {
+                // Console.log
                 console.log(response.data);
                 this.$router.push({ name: 'overviewProduct' });
             })
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
+        },
+        async submitFile() {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            let formData = new FormData(); 
+
+            formData.append('file', this.file);
+
+            await this.$http.post("https://dev-api.haalnuaf.nl/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
+            .then(async response => {
+                // Console.log
+                console.log(response);
+                const photo = await response.data.id; 
+                this.img.push(photo); 
+            })
+            .catch(error => {
+                // Console.log
+                console.log(error);
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
+            })
+        },
+        async fileSubmit() {
+            await this.submitFile(); 
+            this.apiCall(this.productName, this.productDescription, this.price, this.max, this.img)
         },
         handleFileUpload() {
             this.file = this.$refs.file.files[0];
