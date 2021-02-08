@@ -21,6 +21,9 @@ jobs:
       with:
         node-version: '14.x'
 
+    - name: create env
+      run: |
+        echo $'VUE_APP_SALT=A1130376DC52759858000B8CA72A2C72BF89FE0EA37866AED6D9DCCDD443C3EA\nVUE_APP_API=https://prod-api.haalnuaf.nl' > .env
     - name: npm install, build, and test
       run: |
         npm install
