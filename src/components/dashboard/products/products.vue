@@ -2,7 +2,7 @@
     <div>
         <div v-if="parsedProducts">
             <div class="columns is-multiline">
-                <productCard v-for="product in limitedItems" :key="product" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
+                <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
             </div>
             <b-button type="is-primary is-pulled-right" @click="limitNumber += 16">Laad meer items</b-button>
         </div>
