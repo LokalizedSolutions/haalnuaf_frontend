@@ -4,7 +4,7 @@
             <!--image-->
             <div class="card-image">
                 <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" alt="Placeholder image">
                 </figure>
             </div>
             <!--content-->
@@ -47,7 +47,8 @@ export default {
     props: {
         productTitle: String,
         productDescription: String,
-        price: String
+        price: String,
+        img: String
     }
 }
 </script>

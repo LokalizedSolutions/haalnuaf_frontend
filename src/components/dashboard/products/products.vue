@@ -6,8 +6,7 @@
                     <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
                 </p>
             </div>
-            <productCard productTitle="Voorbeeldnaam" productDescription="Voorbeeld omschrijving" price="50.00"/>
-            <b-button @click=apiCall()>Test</b-button>
+            <productCard :productTitle="products[40].name" :productDescription="products[40].description" :price="products[40].price" :img="products[40].photos[0]"/>
         </div>
     </div>
 </template>
@@ -21,7 +20,8 @@ export default {
         return {
             key: '',
             date: '',
-            back_errors: []
+            back_errors: [],
+            products: ''
         }
     },
     components: {
@@ -38,7 +38,7 @@ export default {
             let userId = localStorage.getItem('id');
             this.$http.get(process.env.VUE_APP_API + "/users/" + userId + "/products", { params: { key: this.key, time: this.date } })
             .then(response => {
-                console.log(response);
+                this.products = response.data.products;
             })
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg)
