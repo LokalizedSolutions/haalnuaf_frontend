@@ -134,10 +134,10 @@ router.beforeEach((to, from, next) => {
   const loggedIn = store.getters.isLoggedIn; 
   const isAuth = to.matched.some((record) => record.meta.requiresAuth);
   const isGuest = to.matched.some((record) => record.meta.requiresGuest);
-  
-  if(isAuth && !loggedIn) {
+
+  if (isAuth && !loggedIn) {
     next({ name: "login" });
-  } else if(isGuest && loggedIn) {
+  } else if (isGuest && loggedIn) {
     next({ name: "dashboard" });
   } else {
     next();
