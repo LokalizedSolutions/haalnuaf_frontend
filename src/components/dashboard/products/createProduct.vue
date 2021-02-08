@@ -4,11 +4,6 @@
             <div class="card-content">
                 <div class="content">
                     <h1 class="title is-4">Nieuw product toevoegen</h1>
-                    <div style="margin-bottom: 1vh;">
-                        <p class="has-text-danger">
-                            Het veld, max, staat voor de hoeveelheid producten die u beschikbaar heeft. U kiest -1 voor status uitverkocht, 0 voor status oneindig en een ander getal om het precies aan te geven.
-                        </p>
-                    </div>
                     <div v-if="back_errors.length" style="margin-bottom: 1vh;">
                         <p class="has-text-danger">Hey, er zijn wat fouten opgetreden!
                             <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
@@ -28,6 +23,11 @@
                         <b-field label="Max (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('max')}" :message="errors.first('max')">
                             <b-input v-validate="'decimal:0|min_value:-1'" name="max" type="text" v-model="max" placeholder="Max"></b-input>
                         </b-field>
+                        <div style="margin-bottom: 1vh;">
+                            <p class="has-text-danger">
+                                Het veld, max, staat voor de hoeveelheid producten die u beschikbaar heeft. U kiest -1 voor status uitverkocht, 0 voor status oneindig en een ander getal om het precies aan te geven.
+                            </p>
+                        </div>
                         <!--upload-->
                         <b-field label="Productfoto (optioneel)">
                             <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()">

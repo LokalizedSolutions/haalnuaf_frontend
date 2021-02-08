@@ -9,9 +9,6 @@
                         <!--form-->
                         <div class="card-content">
                             <div class="content">
-                                <div> 
-                                    <p class="has-text-danger" style="margin-bottom: 1vh;">Hey, voor het wachtwoord moet U gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer. Een winkelnaam mag alleen uit kleine letters, - en _ bestaan.</p>
-                                </div>
                                 <div v-if="back_errors.length" style="margin-bottom: 1vh;">
                                     <p class="has-text-danger">Hey, er zijn wat fouten opgetreden!
                                         <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
@@ -29,10 +26,18 @@
                                     <b-field label="Winkelnaam" :type="{'is-danger': true, 'is-danger': errors.has('storename')}" :message="errors.first('storename')">
                                         <b-input v-validate="{ required: true, regex: /^[a-z0-9\-\_]+$/ }" name="storename" type="text" v-model="storename" placeholder="Vul hier uw winkelnaam in..." icon="store" icon-pack="fas"></b-input>
                                     </b-field>
+
+                                    <div> 
+                                        <p class="has-text-danger" style="margin-bottom: 1vh;">Een winkelnaam mag alleen uit kleine letters, - en _ bestaan.</p>
+                                    </div>
                                     
                                     <b-field label="Uw wachtwoord" :type="{'is-danger': true, 'is-danger': errors.has('password')}" :message="errors.first('password')"> 
                                         <b-input v-validate="{ required: true, min: 3, max: 50, regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,50}$/ }" v-model="password" type="password" name="password" placeholder="Vul hier uw wachtwoord in..." icon="key" icon-pack="fas"></b-input>
                                     </b-field>
+
+                                    <div>
+                                        <p class="has-text-danger" style="margin-bottom: 1vh;">Hey, voor het wachtwoord moet U gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer.</p>
+                                    </div>
                                     <p class="control">
                                         <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Registreren" type="is-primary" native-type="submit" value="submit"/>
                                     </p>
