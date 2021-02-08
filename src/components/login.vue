@@ -87,9 +87,7 @@ export default {
                     await this.setId(id);
                     await this.setUsername(username);
                     await this.setToken(token);
-                    this.$router.push({ name: "dashboard" }).catch((err) => {
-                        throw new Error(console.log(`Problem handling something: ${err}.`));
-                    });
+                    await this.routerPush();
                 })
                 .catch(error => {
                     if(error) {
@@ -100,6 +98,11 @@ export default {
                         }
                     }
                 });
+        },
+        async routerPush() {
+            await this.$router.push({ name: "dashboard" }).catch((err) => {
+                throw new Error(console.log(`Problem handling something: ${err}.`));
+            });
         }
     }
 }

@@ -6,6 +6,7 @@
             <productCard productTitle="Voorbeeldnaam" productDescription="Voorbeeld omschrijving" price="50.00"/>
             <productCard productTitle="Voorbeeldnaam" productDescription="Voorbeeld omschrijving" price="50.00"/>
             <productCard productTitle="Voorbeeldnaam" productDescription="Voorbeeld omschrijving" price="50.00"/>
+            <b-button @click=apiCall()>Test</b-button>
         </div>
     </div>
 </template>
@@ -17,6 +18,23 @@ export default {
     name: "producten", 
     components: {
         productCard
+    },
+    methods: {
+        apiCall() {
+            this.date = Date.now();
+            this.key = this.apiKey();
+
+            let userId = localStorage.getItem('id');
+            this.$http.get("https://dev-api.haalnuaf.nl/users/" + userId + "/products", { key: this.key, time: this.date })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error.response.data.msg);
+                console.log(this.date);
+                console.log(this.key);
+            })
+        }
     }
 }
 </script>
