@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         edit() {
-            console.log(this.id);
+            this.$router.push({ path: "edit/" + this.id })
         },
         popUp() {
             this.$buefy.dialog.confirm({
@@ -69,9 +69,10 @@ export default {
             this.key = this.apiKey();
 
             this.$http.post(process.env.VUE_APP_API + "/products/" + this.id + "/delete", { key: this.key, time: this.date, id: localStorage.getItem('id') })
+            // eslint-disable-next-line no-unused-vars
             .then(async response => {
                 await localStorage.removeItem('products');
-                console.log(response);
+                this.$router.go();
             })
             .catch(error => {
                 console.log(error.response.data);
