@@ -78,7 +78,7 @@ export default {
             this.date = Date.now();
             this.key = this.apiKey();
             // Actual request
-            this.$http.post("https://dev-api.haalnuaf.nl/users/login", { key: this.key, time: this.date, email: mail, password: password })
+            this.$http.post(process.env.VUE_APP_API + "/users/login", { key: this.key, time: this.date, email: mail, password: password })
                 /* eslint-disable no-unused-vars */
                 .then(async response => {
                     const token = response.data.token; 

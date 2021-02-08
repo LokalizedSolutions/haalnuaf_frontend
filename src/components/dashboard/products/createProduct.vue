@@ -79,7 +79,7 @@ export default {
             this.date = Date.now();
             this.key = this.apiKey();
 
-            this.$http.post("https://dev-api.haalnuaf.nl/products/create", { key: this.key, time: this.date, storeid: this.id, name: productName, description: productDescription, price: price, max: max, photos: photos })
+            this.$http.post(process.env.VUE_APP_API + "/products/create", { key: this.key, time: this.date, storeid: this.id, name: productName, description: productDescription, price: price, max: max, photos: photos })
             // eslint-disable-next-line no-unused-vars
             .then(async response => {
                 this.$router.push({ name: 'overviewProduct' });
@@ -95,7 +95,7 @@ export default {
 
             formData.append('file', this.file);
 
-            await this.$http.post("https://dev-api.haalnuaf.nl/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
+            await this.$http.post(process.env.VUE_APP_API + "/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
             .then(async response => {
                 const photo = await response.data.id; 
                 this.img.push(photo); 

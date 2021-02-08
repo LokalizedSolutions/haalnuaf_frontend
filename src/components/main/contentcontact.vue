@@ -65,7 +65,7 @@ export default {
             this.date = Date.now();
             this.key = this.apiKey();
             // Send axios request (axios is under this.$http)
-            this.$http.post("https://dev-api.haalnuaf.nl/mail", { key: this.key, time: this.date, email: mail, name: name, message: message })
+            this.$http.post(process.env.VUE_APP_API + "/mail", { key: this.key, time: this.date, email: mail, name: name, message: message })
                 .then(response => this.success.push('Gelukt' + response))
                 .catch(error => this.back_errors.push('Er is iets fout gegaan met onze backend, probeer het later opnieuw. Statuscode: ' + error.response.data.status));
         }

@@ -83,7 +83,7 @@ export default {
             this.date = Date.now();
             this.key = this.apiKey();
             // Send axios request (axios is under this.$http)
-            this.$http.post("https://dev-api.haalnuaf.nl/users/create", { key: this.key, time: this.date, email: mail, company: companyname, storename: storename, password: password })
+            this.$http.post(process.env.VUE_APP_API + "/users/create", { key: this.key, time: this.date, email: mail, company: companyname, storename: storename, password: password })
                 /* eslint-disable no-unused-vars */
                 .then(async response => {
                     await this.$router.push({ name: 'login' });

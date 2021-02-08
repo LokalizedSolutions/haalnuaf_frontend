@@ -25,7 +25,7 @@ export default {
             this.key = this.apiKey();
 
             let userId = localStorage.getItem('id');
-            this.$http.get("https://dev-api.haalnuaf.nl/users/" + userId + "/products", { key: this.key, time: this.date })
+            this.$http.get(process.env.VUE_APP_API + "/users/" + userId + "/products", { key: this.key, time: this.date })
             .then(response => {
                 console.log(response);
             })
