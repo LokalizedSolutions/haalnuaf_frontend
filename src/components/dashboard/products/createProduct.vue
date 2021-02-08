@@ -82,6 +82,7 @@ export default {
             this.$http.post(process.env.VUE_APP_API + "/products/create", { key: this.key, time: this.date, storeid: this.id, name: productName, description: productDescription, price: price, max: max, photos: photos })
             // eslint-disable-next-line no-unused-vars
             .then(async response => {
+                await localStorage.removeItem('products');
                 this.$router.push({ name: 'overviewProduct' });
             })
             .catch(error => {

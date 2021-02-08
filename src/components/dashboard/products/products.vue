@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="products">
+        <div v-if="parsedProducts">
             <div class="columns is-multiline">
                 <productCard v-for="product in limitedItems" :key="product" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
             </div>
@@ -25,6 +25,7 @@ export default {
             date: '',
             back_errors: [],
             products: '',
+            parsedProducts: JSON.parse(localStorage.getItem('products')) || '',
             limitNumber: 16
         }
     },
@@ -37,22 +38,25 @@ export default {
     },
     methods: {
         apiCall() {
-            this.date = Date.now();
-            this.key = this.apiKey();
+            if(!this.parsedProducts.length) {
+                this.date = Date.now();
+                this.key = this.apiKey();
 
-            let userId = localStorage.getItem('id');
-            this.$http.get(process.env.VUE_APP_API + "/users/" + userId + "/products", { params: { key: this.key, time: this.date } })
-            .then(response => {
-                this.products = response.data.products.reverse();
-            })
-            .catch(error => {
-                this.back_errors.push('Bericht: ' + error.response.data.msg)
-            })
+                let userId = localStorage.getItem('id');
+                this.$http.get(process.env.VUE_APP_API + "/users/" + userId + "/products", { params: { key: this.key, time: this.date } })
+                .then(async response => {
+                    this.products = await localStorage.setItem('products', JSON.stringify(response.data.products.reverse()));
+                    this.parsedProducts = await JSON.parse(localStorage.getItem('products'));
+                })
+                .catch(error => {
+                    this.back_errors.push('Bericht: ' + error.response.data.msg);
+                })
+            }
         }
     },
     computed: {
         limitedItems() {
-            return this.products.slice(0,this.limitNumber)
+            return this.parsedProducts.slice(0,this.limitNumber)
         }
     }
 }
