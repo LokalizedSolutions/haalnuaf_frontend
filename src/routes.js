@@ -115,12 +115,12 @@ const routes = [
   },
   // Store
   {
-    path: '/stores/:id',
+    path: '/s/:id',
     name: 'storefront',
     component: storefront
   },
   {
-    path: '/stores/:id/cart',
+    path: '/s/:id/cart',
     name: 'cart',
     component: cart
   },

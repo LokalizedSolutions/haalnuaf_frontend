@@ -1,7 +1,7 @@
 <template>
     <b-navbar wrapper-class="container" spaced shadow fixed-top>
         <template #brand>
-            <b-navbar-item tag="router-link" :to="{ path: '/stores/' + id }">
+            <b-navbar-item tag="router-link" :to="{ path: '/s/' + id }">
                 <img
                     class="image is-32x32" src="https://cdn.lokalized.nl/haalnuaf-images/logo"
                 >
@@ -10,7 +10,7 @@
         <template #end>
             <b-navbar-item tag="div">
             <div class="buttons">
-                <b-button tag="router-link" :to="{ path: '/stores/' + id + '/cart' }" class="button is-primary" icon-right="shopping-cart" icon-pack="fas">
+                <b-button tag="router-link" :to="{ path: '/s/' + id + '/cart' }" class="button is-primary" icon-right="shopping-cart" icon-pack="fas">
                     Uw winkelmand (€126,30)
                 </b-button>
             </div>

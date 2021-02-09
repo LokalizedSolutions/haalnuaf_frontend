@@ -38,4 +38,11 @@ export default {
 .control.has-icons-right .icon {
   pointer-events: auto !important;
 }
+
+@media(max-width: 767px) { /* <== You can change this break point as per your  needs */
+  .reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
 </style>

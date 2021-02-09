@@ -3,7 +3,7 @@
         <storeNav/>
         <hero title="Winkel" description="Wij zijn uw leverancier voor de beste kwaliteitsgereedschappen."/>
         <div class="container" style="margin-top: 2vh;">
-            <div class="columns">
+            <div class="columns reverse-columns">
                 <div class="column is-three-quarters">
                     <products/>
                 </div>
