@@ -11,6 +11,9 @@
         <b-navbar-item href="#about">
           Over ons
         </b-navbar-item>
+        <b-navbar-item href="#screens">
+          Screens
+        </b-navbar-item>
         <b-navbar-item href="#donate">
           Doneren
         </b-navbar-item>

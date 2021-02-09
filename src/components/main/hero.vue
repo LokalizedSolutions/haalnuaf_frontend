@@ -1,7 +1,8 @@
 <template>
-  <section class="hero is-black">
+  <section class="hero is-black is-medium has-background">
+    <img src="https://images.pexels.com/photos/358178/pexels-photo-358178.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="hero-background is-transparent">
     <div class="hero-body">
-        <div class="container" style="margin-top: 1vh;">
+        <div class="container">
             <p class="title">
                 {{ title }}
             </p>
@@ -25,3 +26,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .hero.has-background {
+        position: relative;
+        overflow: hidden;
+    }
+    .hero-background {
+        position: absolute;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
+    }
+    .hero-background.is-transparent {
+        opacity: 0.3;
+    }
+</style>
