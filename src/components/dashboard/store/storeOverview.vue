@@ -12,13 +12,13 @@
                     </div>
                     <form id="form" @submit.prevent="checkForm">
                         <b-field label="Winkelnaam" :type="{'is-danger': true, 'is-danger': errors.has('storename')}" :message="errors.first('storename')">
-                            <b-input v-validate="{ required: true, min: 3, max: 25, regex: /^[a-z0-9\-\_]+$/ }" v-model="this.storename" name="storename" type="text" placeholder="Vul hier uw nieuwe winkelnaam in..." icon="store" icon-pack="fas"></b-input>
+                            <b-input v-validate="{ required: true, min: 3, max: 25, regex: /^[a-z0-9\-\_]+$/ }" v-model="storename" name="storename" type="text" placeholder="Vul hier uw nieuwe winkelnaam in..." icon="store" icon-pack="fas"></b-input>
                         </b-field>
                         <div> 
                             <p class="has-text-danger" style="margin-bottom: 1vh;">Een winkelnaam mag alleen uit kleine letters, - en _ bestaan.</p>
                         </div>
                         <b-field label="Winkel beschrijving" :type="{'is-danger': true, 'is-danger': errors.has('story')}" :message="errors.first('story')">
-                            <b-input v-validate="'required|min:3|max:200'" v-model="this.story" name="story" type="textarea" placeholder="Vul hier uw winkel beschrijving in..."></b-input>
+                            <b-input v-validate="'required|min:3|max:200'" v-model="story" name="story" type="textarea" placeholder="Vul hier uw winkel beschrijving in..."></b-input>
                         </b-field>
                         <div style="margin-bottom: 1vh;">
                             <p class="has-text-danger">
@@ -26,22 +26,22 @@
                             </p>
                         </div>
                         <b-field label="Contact - Mailadres (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactMail')}" :message="errors.first('contactMail')">
-                            <b-input v-validate="'email'" v-model="this.contactMail" name="contactMail" type="text" placeholder="Vul hier uw mailadres in..." icon-pack="fas" icon="envelope"></b-input>
+                            <b-input v-validate="'email'" v-model="contactMail" name="contactMail" type="text" placeholder="Vul hier uw mailadres in..." icon-pack="fas" icon="envelope"></b-input>
                         </b-field>
                         <b-field label="Contact - Telefoonnummer (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPhone')}" :message="errors.first('contactPhone')">
-                            <b-input v-validate="{ regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="this.contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
+                            <b-input v-validate="{ regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
                         </b-field>
                         <b-field label="Contact - Straat + nummer (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactStreet')}" :message="errors.first('contactStreet')">
-                            <b-input v-model="this.contactStreet" name="contactStreet" type="text" placeholder="Vul hier de straat + nummer van uw winkel in..." icon-pack="fas" icon="road"></b-input>
+                            <b-input v-model="contactStreet" name="contactStreet" type="text" placeholder="Vul hier de straat + nummer van uw winkel in..." icon-pack="fas" icon="road"></b-input>
                         </b-field>
                         <b-field label="Contact - Postcode (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactZip')}" :message="errors.first('contactZip')">
-                            <b-input v-model="this.contactZip" name="contactZip" type="text" placeholder="Vul hier de postcode van uw winkel in..." icon-pack="fas" icon="map-marker"></b-input>
+                            <b-input v-model="contactZip" name="contactZip" type="text" placeholder="Vul hier de postcode van uw winkel in..." icon-pack="fas" icon="map-marker"></b-input>
                         </b-field>
                         <b-field label="Contact - Land" :type="{'is-danger': true, 'is-danger': errors.has('contactCountry')}" :message="errors.first('contactCountry')">
-                            <b-input v-validate="'alpha'" v-model="this.contactCountry" name="contactCountry" type="text" placeholder="Vul hier het land in waar uw winkel gelokaliseerd is..." icon-pack="fas" icon="flag"></b-input>
+                            <b-input v-validate="'alpha'" v-model="contactCountry" name="contactCountry" type="text" placeholder="Vul hier het land in waar uw winkel gelokaliseerd is..." icon-pack="fas" icon="flag"></b-input>
                         </b-field>
                         <b-field label="Contact - Plaats (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPlace')}" :message="errors.first('contactPlace')">
-                            <b-input v-validate="'alpha'" v-model="this.contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
+                            <b-input v-validate="'alpha'" v-model="contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
                         </b-field>
                         <b-field label="Banner (optioneel)">
                             <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()">
@@ -71,7 +71,10 @@ export default {
             story: '',
             banner: '',
             storename: '',
-            back_errors: []
+            back_errors: [],
+            file: '',
+            img: [],
+            userId: localStorage.getItem('id')
         }
     },
     mounted() {
@@ -79,6 +82,22 @@ export default {
         this.apiCall(); 
     },
     methods: {
+        checkForm() {
+            // Set backend errors to null
+            this.back_errors = [];
+
+            this.$validator.validateAll().then((result) => {
+                if (result) {
+                    if(this.file) {
+                        this.fileSubmit(); 
+                    } else {
+                        this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactCountry, this.contactPhone, this.contactMail);
+                    }
+                } else {
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                }
+            });
+        },
         apiCall() {
             this.date = Date.now();
             this.key = this.apiKey();
@@ -86,10 +105,12 @@ export default {
             this.$http.get(process.env.VUE_APP_API + '/stores/' + this.userName + '' , { params: { key: this.key, time: this.date } })
             .then(async response => {
                 if(response) {
+                    console.log(response);
                     await this.setVariables(response); 
                 }
             })
             .catch(error => {
+                console.log(error);
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
         },
@@ -103,7 +124,57 @@ export default {
             this.story = response.data.store.story;
             this.banner = response.data.store.banner; 
             this.storename = response.data.store.storename;
-            console.log(this.contactMail + this.contactCountry + this.contactPlace + this.contactStreet + this.contactzip + this.contactPhone + this.story + this.banner + this.color + this.storename)
+        },
+        async submitFile() {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            let formData = new FormData(); 
+
+            formData.append('file', this.file);
+
+            await this.$http.post(process.env.VUE_APP_API + "/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
+            .then(async response => {
+                const photo = await response.data.id; 
+                this.img.push(photo); 
+            })
+            .catch(error => {
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
+            })
+        },
+        async fileSubmit() {
+            await this.submitFile(); 
+            this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactCountry, this.contactPhone, this.contactMail, this.img);
+        },
+        handleFileUpload() {
+            this.file = this.$refs.file.files[0];
+        },
+        apiUpdate(storename, story, street, zip, place, country, mail, phone, banner) {
+            this.date = Date.now();
+            this.key = this.apiKey();
+
+            this.$http.post(process.env.VUE_APP_API + '/users/' + this.userId + '/update', { 
+                key: this.key, 
+                time: this.date, 
+                storename: storename, 
+                banner: banner, 
+                story: story, 
+                contact: {
+                    location: {
+                        street: street,
+                        place: place,
+                        zip: zip,
+                        country: country
+                    },
+                    email: mail,
+                    phone: phone
+                }
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })
         }
     }
 }
