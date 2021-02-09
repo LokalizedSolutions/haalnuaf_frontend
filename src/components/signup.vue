@@ -24,7 +24,7 @@
                                     </b-field>
 
                                     <b-field label="Winkelnaam" :type="{'is-danger': true, 'is-danger': errors.has('storename')}" :message="errors.first('storename')">
-                                        <b-input v-validate="{ required: true, regex: /^[a-z0-9\-\_]+$/ }" name="storename" type="text" v-model="storename" placeholder="Vul hier uw winkelnaam in..." icon="store" icon-pack="fas"></b-input>
+                                        <b-input v-validate="{ required: true, min: 3, max: 25, regex: /^[a-z0-9\-\_]+$/ }" name="storename" type="text" v-model="storename" placeholder="Vul hier uw winkelnaam in..." icon="store" icon-pack="fas"></b-input>
                                     </b-field>
 
                                     <div> 
