@@ -17,6 +17,9 @@
         <b-navbar-item tag="router-link" :to="{ name: 'dashboard_orders' }">
           Bestellingen
         </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/s/' + username }">
+          Ga naar uw webshop
+        </b-navbar-item>
       </template>
       <template #end>
         <b-navbar-dropdown :label="username" right>

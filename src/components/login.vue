@@ -82,7 +82,7 @@ export default {
                 /* eslint-disable no-unused-vars */
                 .then(async response => {
                     const token = response.data.token; 
-                    const username = response.data.user.company;
+                    const username = response.data.user.storename;
                     const id = response.data.user.id; 
                     await this.setId(id);
                     await this.setUsername(username);
