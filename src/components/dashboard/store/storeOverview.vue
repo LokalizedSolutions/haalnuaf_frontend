@@ -37,9 +37,6 @@
                         <b-field label="Contact - Postcode (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactZip')}" :message="errors.first('contactZip')">
                             <b-input v-model="contactZip" name="contactZip" type="text" placeholder="Vul hier de postcode van uw winkel in..." icon-pack="fas" icon="map-marker"></b-input>
                         </b-field>
-                        <b-field label="Contact - Land" :type="{'is-danger': true, 'is-danger': errors.has('contactCountry')}" :message="errors.first('contactCountry')">
-                            <b-input v-validate="'alpha'" v-model="contactCountry" name="contactCountry" type="text" placeholder="Vul hier het land in waar uw winkel gelokaliseerd is..." icon-pack="fas" icon="flag"></b-input>
-                        </b-field>
                         <b-field label="Contact - Plaats (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPlace')}" :message="errors.first('contactPlace')">
                             <b-input v-validate="'alpha'" v-model="contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
                         </b-field>
@@ -63,7 +60,6 @@ export default {
         return {
             userName: '',
             contactMail: '',
-            contactCountry: '',
             contactPlace: '',
             contactStreet: '',
             contactZip: '',
@@ -73,7 +69,6 @@ export default {
             storename: '',
             back_errors: [],
             file: '',
-            img: [],
             userId: localStorage.getItem('id')
         }
     },
@@ -91,7 +86,7 @@ export default {
                     if(this.file) {
                         this.fileSubmit(); 
                     } else {
-                        this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactCountry, this.contactPhone, this.contactMail);
+                        this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactMail, this.contactPhone);
                     }
                 } else {
                     this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
@@ -105,25 +100,22 @@ export default {
             this.$http.get(process.env.VUE_APP_API + '/stores/' + this.userName + '' , { params: { key: this.key, time: this.date } })
             .then(async response => {
                 if(response) {
-                    console.log(response);
                     await this.setVariables(response); 
                 }
             })
             .catch(error => {
-                console.log(error);
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
         },
-        setVariables(response) {
-            this.contactMail = response.data.store.contact.email; 
-            this.contactCountry = response.data.store.contact.location.country;
-            this.contactPlace = response.data.store.contact.place;
-            this.contactStreet = response.data.store.contact.street;
-            this.contactZip = response.data.store.contact.zip; 
-            this.contactPhone = response.data.store.contact.phone;
-            this.story = response.data.store.story;
-            this.banner = response.data.store.banner; 
-            this.storename = response.data.store.storename;
+        async setVariables(response) {
+            this.contactMail = await response.data.store.contactEmail; 
+            this.contactPlace = await response.data.store.contactLocationPlace;
+            this.contactStreet = await response.data.store.contactLocationStreet;
+            this.contactZip = await response.data.store.contactLocationZip; 
+            this.contactPhone = await response.data.store.contactPhone;
+            this.story = await response.data.store.story;
+            this.banner = await response.data.store.banner; 
+            this.storename = await response.data.store.storename;
         },
         async submitFile() {
             this.date = Date.now();
@@ -135,7 +127,7 @@ export default {
             await this.$http.post(process.env.VUE_APP_API + "/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
             .then(async response => {
                 const photo = await response.data.id; 
-                this.img.push(photo); 
+                this.img = photo; 
             })
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
@@ -143,12 +135,12 @@ export default {
         },
         async fileSubmit() {
             await this.submitFile(); 
-            this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactCountry, this.contactPhone, this.contactMail, this.img);
+            this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactMail, this.contactPhone, this.img);
         },
         handleFileUpload() {
             this.file = this.$refs.file.files[0];
         },
-        apiUpdate(storename, story, street, zip, place, country, mail, phone, banner) {
+        apiUpdate(storename, story, street, zip, place, mail, phone, banner) {
             this.date = Date.now();
             this.key = this.apiKey();
 
@@ -158,22 +150,19 @@ export default {
                 storename: storename, 
                 banner: banner, 
                 story: story, 
-                contact: {
-                    location: {
-                        street: street,
-                        place: place,
-                        zip: zip,
-                        country: country
-                    },
-                    email: mail,
-                    phone: phone
-                }
+                contactLocationStreet: street,
+                contactLocationPlace: place,
+                contactLocationZip: zip,
+                contactEmail: mail,
+                contactPhone: phone 
             })
+            // eslint-disable-next-line no-unused-vars
             .then(response => {
-                console.log(response);
+                localStorage.setItem('username', storename);
+                this.$router.go(); 
             })
             .catch(error => {
-                console.log(error);
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
         }
     }
