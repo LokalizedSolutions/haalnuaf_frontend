@@ -19,6 +19,9 @@ import createProduct from './components/dashboard/products/createProduct.vue'
 import orders from './components/dashboard/orders.vue';
 import settings from './components/dashboard/settings.vue';
 import stores from './components/dashboard/store.vue';
+// Storefront
+import storefront from './components/storefront/store.vue';
+import cart from './components/storefront/cart.vue'
 
 const routes = [
   // MAIN routes
@@ -109,6 +112,17 @@ const routes = [
     meta: {
       requiresGuest: true
     } 
+  },
+  // Store
+  {
+    path: '/stores/:id',
+    name: 'storefront',
+    component: storefront
+  },
+  {
+    path: '/stores/:id/cart',
+    name: 'cart',
+    component: cart
   },
   // 404 generation for each none declared route
   { 
