@@ -32,7 +32,7 @@
                                     </div>
                                     
                                     <b-field label="Uw wachtwoord" :type="{'is-danger': true, 'is-danger': errors.has('password')}" :message="errors.first('password')"> 
-                                        <b-input v-validate="{ required: true, min: 3, max: 50, regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,50}$/ }" v-model="password" type="password" name="password" placeholder="Vul hier uw wachtwoord in..." icon="key" icon-pack="fas"></b-input>
+                                        <b-input v-validate="{ required: true, min: 8, max: 50, regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,50}$/ }" v-model="password" type="password" name="password" placeholder="Vul hier uw wachtwoord in..." icon="key" icon-pack="fas"></b-input>
                                     </b-field>
 
                                     <div>

@@ -76,8 +76,6 @@ export default {
             })
             .catch(error => {
                 console.log(error.response.data);
-                console.log(this.key);
-                console.log(this.date);
             }) 
         }
     }
