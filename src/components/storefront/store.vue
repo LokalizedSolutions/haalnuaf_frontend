@@ -19,8 +19,8 @@
 <script>
 import storeNav from './store_nav.vue'
 import hero from './hero.vue'
-import products from './products.vue'
-import sidebar from './sidebar.vue'
+import products from './front/products.vue'
+import sidebar from './front/sidebar.vue'
 import foot from './footer.vue'
 
 export default {
