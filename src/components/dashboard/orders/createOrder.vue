@@ -77,7 +77,11 @@ export default {
         },
         // Add product
         addProduct() {
-            this.selectedProducts.push(this.selected);
+            if(this.selected) {
+                this.selectedProducts.push(this.selected);
+            } else {
+                this.back_errors.push('U heeft geen product geselecteerd.');
+            }
         }
     }
 }
