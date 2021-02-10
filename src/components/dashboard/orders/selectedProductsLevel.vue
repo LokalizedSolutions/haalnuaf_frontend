@@ -36,6 +36,7 @@ export default {
     data() {
         return {
             index: '',
+            indexTwo: '',
             amount: 0
         }
     },
@@ -51,8 +52,14 @@ export default {
         // removeProduct
         removeProduct() {
             this.index = this.$parent.selectedProducts.findIndex(x => x.name === this.productName);
+            this.indexTwo = this.$parent.blob.findIndex(x => x.name === this.productName);
             if(this.index > -1) {
                 this.$parent.selectedProducts.splice(this.index, 1);
+            }
+            if(this.$parent.blob.length) {
+                if(this.indexTwo > -1) {
+                    this.$parent.blob.splice(this.index, 1);
+                }
             }
         },
         // changeAmount
