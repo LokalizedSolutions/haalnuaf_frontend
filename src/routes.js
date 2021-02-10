@@ -17,6 +17,9 @@ import producten from './components/dashboard/products/products.vue'
 import editProduct from './components/dashboard/products/editProduct.vue'
 import createProduct from './components/dashboard/products/createProduct.vue'
 import orders from './components/dashboard/orders.vue';
+import allOrders from './components/dashboard/orders/allOrders.vue'
+import editOrder from './components/dashboard/orders/editOrder.vue'
+import createOrder from './components/dashboard/orders/createOrder.vue'
 import settings from './components/dashboard/settings.vue';
 import stores from './components/dashboard/store.vue';
 // Storefront
@@ -51,6 +54,23 @@ const routes = [
     path: '/dashboard/orders',
     name: 'dashboard_orders',
     component: orders,
+    children: [
+      {
+        path: 'overview',
+        name: 'overviewOrders',
+        component: allOrders
+      },
+      {
+        path: 'edit/:id',
+        name: 'editOrder',
+        component: editOrder
+      },
+      { 
+        path: 'create',
+        name: 'createOrder',
+        component: createOrder
+      }
+    ],
     meta: {
       requiresAuth: true
     }

@@ -7,12 +7,12 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <b-button type="is-light" icon-pack="fas" icon-right="columns" tag="router-link" :to="{ name: 'overviewProduct' }">
+                <b-button type="is-light" icon-pack="fas" icon-right="columns" tag="router-link" :to="{ name: 'overviewOrders' }">
                     {{ actionOne }}
                 </b-button>
             </div>
             <div class="level-item">
-                <b-button type="is-primary" icon-pack="fas" icon-right="plus" tag="router-link" :to="{ name: 'createProduct' }">
+                <b-button type="is-primary" icon-pack="fas" icon-right="plus" tag="router-link" :to="{ name: 'createOrder' }">
                     {{ actionTwo }}
                 </b-button>
             </div>

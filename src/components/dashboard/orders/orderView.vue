@@ -1,6 +1,9 @@
 <template>
     <div>
-        <topAction title="Uw bestellingen" action="Nieuwe bestelling"/>
+        <topAction title="Uw bestellingen" actionOne="Alle bestellingen" actionTwo="Nieuwe bestelling"/>
+        <div class="container">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
