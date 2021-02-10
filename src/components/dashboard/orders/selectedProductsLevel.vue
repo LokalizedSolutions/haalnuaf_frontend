@@ -21,7 +21,7 @@
             </div>
             <div class="level-item">
                 <b-button type="is-danger"
-                icon-right="trash-alt" icon-pack="fas"/>
+                icon-right="trash-alt" icon-pack="fas" @click=removeProduct() />
             </div>
         </div>
     </div>
@@ -30,10 +30,27 @@
 <script>
 export default {
     name: "selectedProductsLevel",
+    // data
+    data() {
+        return {
+            index: ''
+        }
+    },
     // props
     props: {
         productName: String,
-        price: String
+        price: Number,
+        arrayIndex: Number
+    },
+    // methods
+    methods: {
+        // removeProduct
+        removeProduct() {
+            this.index = this.$parent.selectedProducts.findIndex(x => x.name === this.productName);
+            if(this.index > -1) {
+                this.$parent.selectedProducts.splice(this.index, 1);
+            }
+        }
     }
 }
 </script>

@@ -50,7 +50,8 @@ export default {
             productArray: '',
             selected: '',
             selectedProducts: [],
-            back_errors: []
+            back_errors: [],
+            yeet: ''
         }
     },
     // On component creation
@@ -73,6 +74,7 @@ export default {
         // Check form
         checkForm() {
             // console.log(this.productArray);
+            console.log(this.yeet);
         },
         // Add product
         addProduct() {
