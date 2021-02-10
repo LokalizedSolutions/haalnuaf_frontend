@@ -20,6 +20,9 @@
                                 <b-button class="button is-black" @click=addProduct()>Toevoegen</b-button>
                             </p>
                         </b-field>
+                        <div> 
+                            <p class="has-text-danger" style="margin-bottom: 1vh;">Wanneer u de hoeveelheid van een product wijzigd nadat u deze al heeft gewijzigd moet u eerst het product weer verwijderen en daarna opnieuw toevoegen tot de lijst, u bevestigd de hoeveelheid producten door op het groene vinkje te drukken. Kijk ook voor het verzenden altijd goed na of de producten en aantallen kloppen.</p>
+                        </div>
                         <div v-if="selectedProducts.length">
                             <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price" :baseArray="product"/>
                         </div>
@@ -51,7 +54,8 @@ export default {
             selected: '',
             selectedProducts: [],
             back_errors: [],
-            blob: []
+            blob: [],
+            amount: 0
         }
     },
     // On component creation
@@ -74,6 +78,7 @@ export default {
         // Check form
         checkForm() {
             console.log(this.blob);
+            console.log(this.amount);
         },
         // Add product
         addProduct() {
@@ -82,6 +87,9 @@ export default {
             } else {
                 this.back_errors.push('U heeft geen product geselecteerd.');
             }
+        },
+        setTotalPrice(amount) {
+            this.amount = this.amount + amount;
         }
     }
 }

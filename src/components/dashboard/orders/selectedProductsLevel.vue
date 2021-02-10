@@ -7,7 +7,7 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <p>€ {{ price * amount }}</p>
+                <p>€ {{ getTotalPrice() }}</p>
             </div>
             <div class="level-item">
                 <b-field>
@@ -55,12 +55,17 @@ export default {
             this.indexTwo = this.$parent.blob.findIndex(x => x.name === this.productName);
             if(this.index > -1) {
                 this.$parent.selectedProducts.splice(this.index, 1);
+                this.$parent.setTotalPrice(-this.getTotalPrice());
             }
             if(this.$parent.blob.length) {
                 if(this.indexTwo > -1) {
                     this.$parent.blob.splice(this.index, 1);
                 }
             }
+        },
+        // Get total price
+        getTotalPrice() {
+            return this.price * this.amount;
         },
         // changeAmount
         changeAmount() {
@@ -69,6 +74,7 @@ export default {
             var amount = parseInt(this.amount);
             add[productID] = amount;
             this.$parent.blob.push(Object.assign(this.baseArray, add))
+            this.$parent.setTotalPrice(this.getTotalPrice());
         }
     }
 }
