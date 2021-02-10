@@ -21,7 +21,7 @@
                             </p>
                         </b-field>
                         <div v-if="selectedProducts.length">
-                            <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price"/>
+                            <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price" :baseArray="product"/>
                         </div>
                         <!--contact fields-->
                         <!--submit form-->
@@ -51,7 +51,7 @@ export default {
             selected: '',
             selectedProducts: [],
             back_errors: [],
-            yeet: ''
+            blob: []
         }
     },
     // On component creation
@@ -73,8 +73,7 @@ export default {
     methods: {
         // Check form
         checkForm() {
-            // console.log(this.productArray);
-            console.log(this.yeet);
+            console.log(this.blob);
         },
         // Add product
         addProduct() {

@@ -7,16 +7,18 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <p>€ {{ price }}</p>
+                <p>€ {{ price * amount }}</p>
             </div>
             <div class="level-item">
                 <b-field>
-                    <b-input placeholder="Hoeveelheid"
+                    <b-input v-model="amount" placeholder="Hoeveelheid"
                         type="number"
                         min="1"
                         max="99"
                         value="1">
                     </b-input>
+                    <b-button type="is-success"
+                    icon-right="check" icon-pack="fas" @click=changeAmount() />
                 </b-field>
             </div>
             <div class="level-item">
@@ -33,14 +35,16 @@ export default {
     // data
     data() {
         return {
-            index: ''
+            index: '',
+            amount: 0
         }
     },
     // props
     props: {
         productName: String,
         price: Number,
-        arrayIndex: Number
+        arrayIndex: Number,
+        baseArray: Object
     },
     // methods
     methods: {
@@ -50,6 +54,14 @@ export default {
             if(this.index > -1) {
                 this.$parent.selectedProducts.splice(this.index, 1);
             }
+        },
+        // changeAmount
+        changeAmount() {
+            var add = {};
+            var productID = "amount";
+            var amount = parseInt(this.amount);
+            add[productID] = amount;
+            this.$parent.blob.push(Object.assign(this.baseArray, add))
         }
     }
 }
