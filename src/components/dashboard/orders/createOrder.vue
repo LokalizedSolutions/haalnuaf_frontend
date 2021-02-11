@@ -54,8 +54,7 @@ export default {
             selected: '',
             selectedProducts: [],
             back_errors: [],
-            blob: [],
-            amount: 0
+            blob: []
         }
     },
     // On component creation
@@ -91,15 +90,12 @@ export default {
                 this.back_errors.push('U heeft geen product geselecteerd.');
             }
         },
-        setTotalPrice(amount) {
-            this.amount = this.amount + amount;
-        },
         apiCall() {
             this.date = Date.now();
             this.key = this.apiKey();
             this.id = localStorage.getItem('id');
 
-            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: "Justian", contactEmail: "justiandev@gmail.com", contactPhone: "0618048010", products: this.blob, price: 1000, gettime: 1612979000})
+            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: "Justian", contactEmail: "justiandev@gmail.com", contactPhone: "0618048010", products: this.blob, gettime: 1612979000})
             .then(response => {
                 console.log(response);
             })

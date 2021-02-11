@@ -37,7 +37,7 @@ export default {
         return {
             index: '',
             indexTwo: '',
-            amount: 0
+            amount: 1
         }
     },
     // props
@@ -55,7 +55,6 @@ export default {
             this.indexTwo = this.$parent.blob.findIndex(x => x.name === this.productName);
             if(this.index > -1) {
                 this.$parent.selectedProducts.splice(this.index, 1);
-                this.$parent.setTotalPrice(-this.getTotalPrice());
             }
             if(this.$parent.blob.length) {
                 if(this.indexTwo > -1) {
@@ -81,7 +80,6 @@ export default {
             } else {
                 this.$parent.blob.push(Object.assign(this.baseArray, add));
             }
-            this.$parent.setTotalPrice(this.getTotalPrice());
         }
     }
 }
