@@ -21,7 +21,7 @@
                             </p>
                         </b-field>
                         <div> 
-                            <p class="has-text-danger" style="margin-bottom: 1vh;">Wanneer u de hoeveelheid van een product wijzigd nadat u deze al heeft gewijzigd moet u eerst het product weer verwijderen en daarna opnieuw toevoegen tot de lijst, u bevestigd de hoeveelheid producten door op het groene vinkje te drukken. Kijk ook voor het verzenden altijd goed na of de producten en aantallen kloppen.</p>
+                            <p class="has-text-danger" style="margin-bottom: 1vh;">U bevestigd de hoeveelheid producten door op het groene vinkje te drukken. Kijk ook voor het verzenden altijd goed na of de producten en aantallen kloppen.</p>
                         </div>
                         <div v-if="selectedProducts.length">
                             <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price" :baseArray="product"/>

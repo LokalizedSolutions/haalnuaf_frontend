@@ -73,7 +73,14 @@ export default {
             var productID = "amount";
             var amount = parseInt(this.amount);
             add[productID] = amount;
-            this.$parent.blob.push(Object.assign(this.baseArray, add))
+            // Check if there is no product in array with same name but other amount
+            if(this.$parent.blob.findIndex(x => x.name === this.productName) > -1) {
+                this.index = this.$parent.blob.findIndex(x => x.name === this.productName);
+                this.$parent.blob.splice(this.index, 1);
+                this.$parent.blob.push(Object.assign(this.baseArray, add));
+            } else {
+                this.$parent.blob.push(Object.assign(this.baseArray, add));
+            }
             this.$parent.setTotalPrice(this.getTotalPrice());
         }
     }
