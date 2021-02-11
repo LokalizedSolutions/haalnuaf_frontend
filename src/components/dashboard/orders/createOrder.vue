@@ -27,6 +27,15 @@
                             <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price" :baseArray="product"/>
                         </div>
                         <!--contact fields-->
+                        <b-field label="Naam + achternaam" :type="{'is-danger': true, 'is-danger': errors.has('contactName')}" :message="errors.first('contactName')">
+                            <b-input v-validate="'required'" name="contactName" type="text" v-model="contactName" placeholder="Vul hier naam + achternaam in..." icon="heading" icon-pack="fas"></b-input>
+                        </b-field>
+                        <b-field label="Mailadres" :type="{'is-danger': true, 'is-danger': errors.has('contactMail')}" :message="errors.first('contactMail')">
+                            <b-input v-validate="'required|email'" name="contactMail" type="text" v-model="contactMail" placeholder="Vul hier het mailadres in..." icon="heading" icon-pack="fas"></b-input>
+                        </b-field>
+                        <b-field label="Telefoonnummer" :type="{'is-danger': true, 'is-danger': errors.has('contactPhone')}" :message="errors.first('contactPhone')">
+                            <b-input v-validate="{ required: true, regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
+                        </b-field>
                         <!--submit form-->
                         <p class="control">
                             <b-button class="is-pulled-right" style="margin-bottom: 3vh; margin-top: 2vh;" label="Bestelling aanmaken" type="is-primary" native-type="submit" value="submit"/>
@@ -54,7 +63,10 @@ export default {
             selected: '',
             selectedProducts: [],
             back_errors: [],
-            blob: []
+            blob: [],
+            contactName: '',
+            contactMail: '',
+            contactPhone: ''
         }
     },
     // On component creation
@@ -75,7 +87,20 @@ export default {
     methods: {
         // Check form
         checkForm() {
-            this.apiCall();
+            // Set backend errors to null
+            this.back_errors = [];
+
+            this.$validator.validateAll().then((result) => {
+                if (result) {
+                    if (this.blob.length) {
+                        this.apiCall();
+                    } else {
+                        this.back_errors.push('U heeft geen producten toegevoegd aan de bestelling of de hoeveelheid niet bevestigd, probeer het opnieuw.');
+                    }
+                } else {
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                }
+            });
         },
         // Add product
         addProduct() {
@@ -95,7 +120,7 @@ export default {
             this.key = this.apiKey();
             this.id = localStorage.getItem('id');
 
-            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: "Justian", contactEmail: "justiandev@gmail.com", contactPhone: "0618048010", products: this.blob, gettime: 1612979000})
+            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: this.contactName, contactEmail: this.contactMail, contactPhone: this.contactPhone, products: this.blob, gettime: 1612979000})
             .then(response => {
                 console.log(response);
             })
