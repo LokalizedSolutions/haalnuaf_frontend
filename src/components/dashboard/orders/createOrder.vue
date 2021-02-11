@@ -63,7 +63,6 @@ export default {
         this.date = Date.now();
         this.key = this.apiKey(); 
         this.id = localStorage.getItem('id');
-        this.userName = localStorage.getItem('username');
 
         this.$http.get(process.env.VUE_APP_API + '/users/' + this.id + '/products', { params: { key: this.key , time: this.date } })
         .then(async response => {
@@ -77,19 +76,36 @@ export default {
     methods: {
         // Check form
         checkForm() {
-            console.log(this.blob);
-            console.log(this.amount);
+            this.apiCall();
         },
         // Add product
         addProduct() {
             if(this.selected) {
-                this.selectedProducts.push(this.selected);
+                this.back_errors = [];
+                if(this.selectedProducts.findIndex(x => x.name === this.selected.name) === -1) {
+                    this.selectedProducts.push(this.selected);
+                } else {
+                    this.back_errors.push('U kan niet 2x hetzelfde product toevoegen.');
+                }
             } else {
                 this.back_errors.push('U heeft geen product geselecteerd.');
             }
         },
         setTotalPrice(amount) {
             this.amount = this.amount + amount;
+        },
+        apiCall() {
+            this.date = Date.now();
+            this.key = this.apiKey();
+            this.id = localStorage.getItem('id');
+
+            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: "Justian", contactEmail: "justiandev@gmail.com", contactPhone: "0618048010", products: this.blob, price: 1000, gettime: 1612979000})
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error.response.data.msg);
+            })
         }
     }
 }

@@ -59,7 +59,7 @@ export default {
             }
             if(this.$parent.blob.length) {
                 if(this.indexTwo > -1) {
-                    this.$parent.blob.splice(this.index, 1);
+                    this.$parent.blob.splice(this.indexTwo, 1);
                 }
             }
         },
