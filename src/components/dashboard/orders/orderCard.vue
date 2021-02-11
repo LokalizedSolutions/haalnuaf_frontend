@@ -1,0 +1,69 @@
+<template>
+    <div class="column is-one-quarter">
+        <div class="card equal-height">
+            <!--content-->
+            <div class="card-content">
+                <div class="content">
+                    <h1 class="title is-5">{{ order.contactName }}</h1>
+                    <div>
+                        <strong>Mail: </strong>{{ order.contactEmail }}
+                    </div>
+                    <div>
+                        <strong>Nummer: </strong>{{ order.contactPhone }}
+                    </div>
+                    <div>
+                        <strong>Totaalprijs: </strong>€ {{ order.price }}
+                    </div>
+                </div>
+            </div>
+            <div class="button-box">
+                <a>
+                    <b-button type="is-white" icon-pack="fas" icon-right="eye" @click=show()>
+                        Bekijken
+                    </b-button>
+                    <b-button type="is-success" icon-pack="fas" icon-right="check" @click=complete() style="margin-left: 2%;">
+                        Voltooi
+                    </b-button>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "orderCard",
+    props: {
+        contactName: String,
+        order: Object
+    },
+    methods: {
+        complete() {
+            this.$buefy.dialog.confirm({
+                title: 'Order voltooien',
+                message: 'Bent u er zeker van dat u deze order wil <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de order uit uw overzicht.',
+                confirmText: 'Voltooien',
+                type: 'is-success',
+                onConfirm: () => this.removeOrder()
+            })
+        },
+        show() {
+            // Buefy modal
+            // https://buefy.org/documentation/modal/ 
+        },
+        removeOrder() {
+            this.date = Date.now(); 
+            this.key = this.apiKey();
+
+            this.$http.post(process.env.VUE_APP_API + '/orders/' + this.order.id + '/delete', { key: this.key, time: this.date })
+            .then(response => {
+                console.log(response);
+                this.$router.go();
+            })
+            .catch(error => {
+                console.log(error.response.data.msg);
+            })
+        }
+    }
+}
+</script>

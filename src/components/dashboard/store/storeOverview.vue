@@ -40,6 +40,10 @@
                         <b-field label="Contact - Plaats (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPlace')}" :message="errors.first('contactPlace')">
                             <b-input v-validate="'alpha'" v-model="contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
                         </b-field>
+                        <div v-for="(openingHour, index) in times" :key="index">
+                            <openingHours/>
+                            {{ openingHour.start }}
+                        </div>
                         <b-field label="Banner (optioneel)">
                             <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()">
                         </b-field>
@@ -54,6 +58,8 @@
 </template>
 
 <script>
+import openingHours from './openingHours.vue'
+
 export default {
     name: "storeOverview",
     data() {
@@ -69,8 +75,12 @@ export default {
             storename: '',
             back_errors: [],
             file: '',
+            times: '',
             userId: localStorage.getItem('id')
         }
+    },
+    components: {
+        openingHours
     },
     mounted() {
         this.userName = localStorage.getItem('username');
@@ -116,6 +126,8 @@ export default {
             this.story = await response.data.store.story;
             this.banner = await response.data.store.banner; 
             this.storename = await response.data.store.storename;
+            this.times = await response.data.store.times;
+            console.log(this.times);
         },
         async submitFile() {
             this.date = Date.now();
