@@ -2,25 +2,25 @@
     <div class="content">
         <h1 class="title is-4">Openingstijden</h1>
         <div>
-            <strong>Ma: </strong>{{ store.times[0] ? store.times[0].start + " - " + store.times[0].end : "Gesloten" }}
+            <strong>Ma: </strong><p class="is-inline-block" v-if="store.times[0].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[0].start + " - " + store.times[0].end }}</p>
         </div>
         <div>
-            <strong>Di: </strong>{{ store.times[1] ? store.times[1].start + " - " + store.times[1].end : "Gesloten" }}
+            <strong>Di: </strong><p class="is-inline-block" v-if="store.times[1].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[1].start + " - " + store.times[1].end }}</p>
         </div>
         <div>
-            <strong>Wo: </strong>{{ store.times[2] ? store.times[2].start + " - " + store.times[2].end : "Gesloten" }}
+            <strong>Wo: </strong><p class="is-inline-block" v-if="store.times[2].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[2].start + " - " + store.times[2].end }}</p>
         </div>
         <div>
-            <strong>Do: </strong>{{ store.times[3] ? store.times[3].start + " - " + store.times[3].end : "Gesloten"}}
+            <strong>Do: </strong><p class="is-inline-block" v-if="store.times[3].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[3].start + " - " + store.times[3].end }}</p>
         </div>
         <div>
-            <strong>Vr: </strong>{{ store.times[4] ? store.times[4].start + " - " + store.times[4].end : "Gesloten" }}
+            <strong>Vr: </strong><p class="is-inline-block" v-if="store.times[4].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[4].start + " - " + store.times[4].end }}</p>
         </div>
         <div>
-            <strong>Za: </strong>{{ store.times[5] ? store.times[5].start + " - " + store.times[5].end : "Gesloten" }}
+            <strong>Za: </strong><p class="is-inline-block" v-if="store.times[5].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[5].start + " - " + store.times[5].end }}</p>
         </div>
         <div>
-            <strong>Zo: </strong>{{ store.times[6] ? store.times[6].start + " - " + store.times[6].end : "Gesloten" }}
+            <strong>Zo: </strong><p class="is-inline-block" v-if="store.times[6].start === null">Gesloten</p><p v-else class="is-inline-block">{{ store.times[6].start + " - " + store.times[6].end }}</p>
         </div>
     </div>
 </template>

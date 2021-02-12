@@ -47,6 +47,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[0].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[0].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(0)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -54,6 +57,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[1].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[1].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(1)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -61,6 +67,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[2].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[2].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(2)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -68,6 +77,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[3].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[3].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(3)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -75,6 +87,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[4].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[4].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(4)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -82,6 +97,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[5].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[5].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(5)">Gesloten</span>
+                                </p>
                             </b-field>
                             <b-field style="margin-top: -2vh;">
                                 <p class="control">
@@ -89,6 +107,9 @@
                                 </p>
                                 <b-input placeholder="Openingstijd" v-model="times[6].start"></b-input>
                                 <b-input placeholder="Sluitingstijd" v-model="times[6].end"></b-input>
+                                <p class="control">
+                                    <span class="button is-danger" @click="closeStore(6)">Gesloten</span>
+                                </p>
                             </b-field>
                         </div>
                         <b-field label="Banner (optioneel)">
@@ -218,6 +239,10 @@ export default {
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
+        },
+        async closeStore(i) {
+            this.times[i].start = null;
+            this.times[i].end = null;
         }
     }
 }
