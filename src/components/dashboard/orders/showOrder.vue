@@ -10,7 +10,13 @@
                     <p><strong>Nummer: </strong> {{ order.contactPhone }}</p>
                 </div>
                 <div>
+                    <p><strong>Order ID: </strong> {{ order.id.split('-')[0]}}</p>
+                </div>
+                <div>
                     <p><strong>Totaalprijs: </strong> € {{ order.price }}</p>
+                </div>
+                <div>
+                    <strong>Afhaaltijd: </strong>Vanaf {{ new Date(order.time).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"})}} tot {{ new Date(order.time+(60000*30)).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"}) }}
                 </div>
                 <h1 style="margin-bottom: 1vh;" class="title is-5">Bestelde producten:</h1>
                 <div v-for="(product, index) in products" :key="index">
@@ -39,6 +45,9 @@
                 </div>
             </div>
         </div>
+        <b-button type="is-success" icon-pack="fas" icon-right="check" @click=complete() style="margin-left: 2%; margin-bottom: 2vh;">
+            Voltooi bestelling
+        </b-button>
     </div>
 </template>
 
@@ -67,6 +76,29 @@ export default {
                 this.$router.go(-1);
             }
         })
+    },
+    methods: {
+        complete() {
+            this.$buefy.dialog.confirm({
+                title: 'Order voltooien',
+                message: 'Bent u er zeker van dat u deze order wil <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de order uit uw overzicht.',
+                confirmText: 'Voltooien',
+                type: 'is-success',
+                onConfirm: () => this.removeOrder()
+            })
+        },
+        removeOrder() {
+            this.date = Date.now(); 
+            this.key = this.apiKey();
+
+            this.$http.post(process.env.VUE_APP_API + '/orders/' + this.order.id + '/delete', { key: this.key, time: this.date })
+            .then(() => {
+                this.$router.go();
+            })
+            .catch(error => {
+                this.back_errors.push('Bericht: ' + error.response.data.msg)
+            })
+        }
     }
 }
 </script>

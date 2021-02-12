@@ -28,13 +28,13 @@
                         <p><strong>Beschrijving:</strong> {{ productDescription }}</p>
                     </div>
                     <div v-if="max === -1">
-                        <p class="has-text-danger"><strong>Voorraad: </strong>Uitverkocht</p>
+                        <p class="has-text-danger"><strong>Max aantal: </strong>Uitverkocht</p>
                     </div>
                     <div v-else-if="max === 0">
-                        <p><strong>Voorraad: </strong>Oneindig</p>
+                        <p><strong>Max aantal: </strong>Oneindig</p>
                     </div>
                     <div v-else>
-                        <p><strong>Voorraad: </strong>{{ max }}</p>
+                        <p><strong>Max aantal: </strong>{{ max }}</p>
                     </div>
                 </div>
             </div>
