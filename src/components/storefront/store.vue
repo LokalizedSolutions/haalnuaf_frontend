@@ -31,6 +31,23 @@ export default {
         products,
         sidebar,
         foot
+    },
+    mounted() {
+        this.date = Date.now(); 
+        const crypto = require('crypto');
+        this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+
+        this.$http.get(process.env.VUE_APP_API + '/stores/' + this.$route.params.id, { params: { key: this.key, time: this.date }})
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            if(error.response.data.status === 404) {
+                this.$router.push('/404');
+            } else {
+                this.$router.push('/404');
+            }
+        })
     }
 }
 </script>
