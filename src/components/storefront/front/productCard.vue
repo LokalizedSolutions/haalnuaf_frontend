@@ -24,7 +24,18 @@
                             </div>
                         </div>
                     </div>
-                    <p>{{ productDescription }}</p>
+                    <div>
+                        <p><strong>Beschrijving:</strong> {{ productDescription }}</p>
+                    </div>
+                    <div v-if="max === -1">
+                        <p class="has-text-danger"><strong>Voorraad: </strong>Uitverkocht</p>
+                    </div>
+                    <div v-else-if="max === 0">
+                        <p><strong>Voorraad: </strong>Oneindig</p>
+                    </div>
+                    <div v-else>
+                        <p><strong>Voorraad: </strong>{{ max }}</p>
+                    </div>
                 </div>
             </div>
             <div class="button-box">
@@ -43,7 +54,8 @@ export default {
         productDescription: String,
         productTitle: String,
         price: Number,
-        img: String
+        img: String,
+        max: Number
     }
 }
 </script>

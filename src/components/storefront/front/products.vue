@@ -2,7 +2,7 @@
     <div>
         <topBar/>
         <div class="columns is-multiline">
-            <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
+            <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]" :max="product.max"/>
         </div>
         <div v-if="!(limitNumber > products.length)">
             <b-button type="is-primary is-pulled-right" @click="limitNumber += 6">Laad meer items</b-button>
