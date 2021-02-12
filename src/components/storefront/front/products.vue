@@ -2,12 +2,7 @@
     <div>
         <topBar/>
         <div class="columns is-multiline">
-            <productCard productTitle="Blauwekaas" productDescription="De lekkersteblauwe kaas van Nederland." price=20.00 img="0bd97215-4c19-44de-ac62-8c00b59ec8d5"/>
-            <productCard productTitle="Schimmelkaas" productDescription="Schimmelkaas met een lekker pikante smaak." price=10.00 img="f2451f3b-2989-4e9d-80c8-228cccbb0886"/>
-            <productCard productTitle="Chocoladekaas" productDescription="Chocoladekaas, kaas met een zoet tintje." price=27.50 img="9eb74248-246d-42fe-8265-3dc04831d329"/>
-            <productCard productTitle="Aardbeienkaas" productDescription="Aardbeienkaas, kaas met een rode uitslag." price=4.50 img="b4809aee-c574-4817-9299-dfecfb323f33"/>
-            <productCard productTitle="Kaasplankje" productDescription="Kom de avondklok goed door met deze avondkaasjes." price=15.50 img="49f57b5b-5160-4b6f-a77a-f2808870a688"/>
-            <productCard productTitle="Mes" productDescription="Het perfecte mes om een stukje kaas te snijden." price=7.50 img="8541d536-72d3-4935-aebb-4b638c8e7018"/>
+            <productCard v-for="(product, index) in products" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
         </div>
         <b-button type="is-primary is-pulled-right">Laad meer items</b-button>
     </div>
@@ -22,6 +17,45 @@ export default {
     components: {
         topBar,
         productCard
+    },
+    data() {
+        return {
+            storeId: '',
+            products: []
+        }
+    },
+    async created() {
+        this.date = Date.now(); 
+        const crypto = require('crypto');
+        this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+
+        await this.$http.get(process.env.VUE_APP_API + '/stores/' + this.$route.params.id, { params: { key: this.key, time: this.date }})
+        .then(async response => {
+            this.storeId = await response.data.store.storeid; 
+            await this.loadProducts(); 
+        })
+        .catch(error => {
+            if(error.response.data.status === 404) {
+                this.$router.push('/404');
+            } else {
+                this.$router.push('/404');
+            }
+        })
+    },
+    methods: {
+        async loadProducts() {
+            this.date = Date.now(); 
+            const crypto = require('crypto');
+            this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+
+            this.$http.get(process.env.VUE_APP_API + "/users/" + this.storeId + "/products", { params: { key: this.key, time: this.date } })
+            .then(async response => {
+                this.products = response.data.products.reverse();
+            })
+            .catch(error => {
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
+            })
+        }
     }
 }
 </script>

@@ -28,8 +28,16 @@ export default {
     name: "error",
     methods: {
         onClick() {
-            this.$router.go(-1);
+            this.$router.push({ path: "/" });
         }
     }
 }
 </script>
+
+<style scoped>
+    .hero {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+</style>

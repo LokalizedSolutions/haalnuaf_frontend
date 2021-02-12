@@ -2,31 +2,49 @@
     <div class="content">
         <h1 class="title is-4">Openingstijden</h1>
         <div>
-            <strong>Ma: </strong>19.00 - 20.00
+            <strong>Ma: </strong>{{ store.times[0].start }} - {{ store.times[0].end }}
         </div>
         <div>
-            <strong>Di: </strong>19.00 - 20.00
+            <strong>Di: </strong>{{ store.times[1].start }} - {{ store.times[1].end }}
         </div>
         <div>
-            <strong>Wo: </strong>19.00 - 20.00
+            <strong>Wo: </strong>{{ store.times[2].start }} - {{ store.times[2].end }}
         </div>
         <div>
-            <strong>Do: </strong>19.00 - 20.00
+            <strong>Do: </strong>{{ store.times[3].start }} - {{ store.times[3].end }}
         </div>
         <div>
-            <strong>Vr: </strong>19.00 - 20.00
+            <strong>Vr: </strong>{{ store.times[4].start }} - {{ store.times[4].end }}
         </div>
         <div>
-            <strong>Za: </strong>19.00 - 20.00
+            <strong>Za: </strong>{{ store.times[5].start }} - {{ store.times[5].end }}
         </div>
         <div>
-            <strong>Zo: </strong>19.00 - 20.00
+            <strong>Zo: </strong>{{ store.times[6].start }} - {{ store.times[6].end }}
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "openingHours"
+    name: "openingHours",
+    data() {
+        return {
+            store: '' 
+        }
+    },  
+    mounted() {
+        this.date = Date.now(); 
+        const crypto = require('crypto');
+        this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+
+        this.$http.get(process.env.VUE_APP_API + '/stores/' + this.$route.params.id, { params: { key: this.key, time: this.date }})
+        .then(async response => {
+            this.store = await response.data.store; 
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 }
 </script>

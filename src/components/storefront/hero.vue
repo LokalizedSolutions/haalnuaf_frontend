@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-black is-medium has-background">
-    <img src="https://mediabank.valkenhorst.nl/imagebank/images/305/image67959/c323x1024.jpg" class="hero-background is-transparent">
+    <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" class="hero-background is-transparent">
     <div class="hero-body">
         <div class="container">
             <p class="title">
@@ -19,7 +19,8 @@ export default {
     name: 'hero',
     props: {
         title: String,
-        description: String
+        description: String,
+        img: String
     }
 }
 </script>

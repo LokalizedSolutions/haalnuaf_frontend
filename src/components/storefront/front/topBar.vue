@@ -5,6 +5,7 @@
                     <h1 class="title">Producten</h1>
                 </div>
             </div>
+            <!--
             <div class="level-right">
                 <div class="level-item">
                     <b-field>
@@ -19,6 +20,7 @@
                     </b-field>
                 </div>
             </div>
+            -->
         </div>
 </template>
 
