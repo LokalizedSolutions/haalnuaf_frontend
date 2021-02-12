@@ -14,6 +14,9 @@
                     <div>
                         <strong>Totaalprijs: </strong>€ {{ order.price }}
                     </div>
+                    <div>
+                        <strong>Producten: </strong> Druk op bekijken
+                    </div>
                 </div>
             </div>
             <div class="button-box">
@@ -48,8 +51,7 @@ export default {
             })
         },
         show() {
-            // Buefy modal
-            // https://buefy.org/documentation/modal/ 
+            this.$router.push({ path: 'show/' + this.order.id });
         },
         removeOrder() {
             this.date = Date.now(); 
