@@ -121,11 +121,12 @@ export default {
             this.id = localStorage.getItem('id');
 
             this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: this.contactName, contactEmail: this.contactMail, contactPhone: this.contactPhone, products: this.blob, gettime: 1612979000})
+            // eslint-disable-next-line no-unused-vars
             .then(response => {
-                console.log(response);
+                this.$router.push({ name: 'overviewOrders' });
             })
             .catch(error => {
-                console.log(error.response.data.msg);
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
         }
     }

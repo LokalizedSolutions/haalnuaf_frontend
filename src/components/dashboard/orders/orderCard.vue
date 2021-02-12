@@ -56,12 +56,11 @@ export default {
             this.key = this.apiKey();
 
             this.$http.post(process.env.VUE_APP_API + '/orders/' + this.order.id + '/delete', { key: this.key, time: this.date })
-            .then(response => {
-                console.log(response);
+            .then(() => {
                 this.$router.go();
             })
             .catch(error => {
-                console.log(error.response.data.msg);
+                this.back_errors.push('Bericht: ' + error.response.data.msg)
             })
         }
     }

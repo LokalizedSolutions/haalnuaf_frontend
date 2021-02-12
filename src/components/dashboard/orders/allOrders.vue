@@ -1,7 +1,14 @@
 <template>
     <div>
-        <div class="columns is-multiline">
-            <orderCard v-for="(order, index) in orders" :key="index" :order="order"/>
+        <div v-if="orders.length">
+            <div class="columns is-multiline">
+                <orderCard v-for="(order, index) in orders" :key="index" :order="order"/>
+            </div>
+        </div>
+        <div v-else>
+            <p class="has-text-danger">Hey, er zijn wat fouten opgetreden bij het inladen van de orders!
+                <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
+            </p>
         </div>
     </div>
 </template>
@@ -16,7 +23,8 @@ export default {
     },
     data() {
         return {
-            orders: ''
+            orders: '',
+            back_errors: []
         }
     },
     mounted() {
@@ -32,11 +40,9 @@ export default {
             this.$http.get(process.env.VUE_APP_API + '/users/' + this.id + '/orders', { params: { key: this.key, time: this.date, id: this.id }})
             .then(response => {
                 this.orders = response.data.orders.reverse();
-                console.log(response.data.orders)
             })
             .catch(error => {
-                console.log(error.response.data.reason);
-                console.log(this.key + 'Time: ' + this.date)
+                this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
         }
     }
