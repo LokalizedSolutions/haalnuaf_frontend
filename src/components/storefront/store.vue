@@ -1,7 +1,7 @@
 <template>
     <div>
         <storeNav/>
-        <hero :title="store.storename" :description="store.story" :img="store.banner"/>
+        <hero :title="store.company" :description="store.story" :img="store.banner"/>
         <div class="container" style="margin-top: 2vh;">
             <div class="columns reverse-columns">
                 <div class="column is-three-quarters">

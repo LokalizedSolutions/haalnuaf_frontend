@@ -2,9 +2,11 @@
     <div>
         <topBar/>
         <div class="columns is-multiline">
-            <productCard v-for="(product, index) in products" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
+            <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]"/>
         </div>
-        <b-button type="is-primary is-pulled-right">Laad meer items</b-button>
+        <div v-if="!(limitNumber > products.length)">
+            <b-button type="is-primary is-pulled-right" @click="limitNumber += 6">Laad meer items</b-button>
+        </div>
     </div>
 </template>
 
@@ -21,7 +23,8 @@ export default {
     data() {
         return {
             storeId: '',
-            products: []
+            products: [],
+            limitNumber: 6
         }
     },
     async created() {
@@ -55,6 +58,11 @@ export default {
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
+        }
+    },
+    computed: {
+        limitedItems() {
+            return this.products.slice(0,this.limitNumber)
         }
     }
 }

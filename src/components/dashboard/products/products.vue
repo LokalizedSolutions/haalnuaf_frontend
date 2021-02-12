@@ -4,7 +4,9 @@
             <div class="columns is-multiline">
                 <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]" :id="product.id"/>
             </div>
-            <b-button type="is-primary is-pulled-right" @click="limitNumber += 16">Laad meer items</b-button>
+            <div v-if="!(limitNumber > parsedProducts.length)">
+                <b-button type="is-primary is-pulled-right" @click="limitNumber += 6">Laad meer items</b-button>
+            </div>
         </div>
         <div v-else>
             <p class="has-text-danger">Hey, er zijn wat fouten opgetreden bij het inladen van de producten!
