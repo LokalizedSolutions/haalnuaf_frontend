@@ -40,6 +40,11 @@
                         <b-field label="Contact - Plaats (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPlace')}" :message="errors.first('contactPlace')">
                             <b-input v-validate="'alpha'" v-model="contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
                         </b-field>
+                        <div style="margin-bottom: 1vh;">
+                            <p class="has-text-danger">
+                                Vul uw openingstijden in het volgende format in: 18:00 (voorbeeld).
+                            </p>
+                        </div>
                         <div v-if="times.length">
                             <b-field label="Openingstijden">
                                 <p class="control">
