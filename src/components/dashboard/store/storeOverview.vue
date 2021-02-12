@@ -40,9 +40,56 @@
                         <b-field label="Contact - Plaats (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('contactPlace')}" :message="errors.first('contactPlace')">
                             <b-input v-validate="'alpha'" v-model="contactPlace" name="contactPlace" type="text" placeholder="Vul hier de plaats in waar uw winkel is..." icon-pack="fas" icon="location-arrow"></b-input>
                         </b-field>
-                        <div v-for="(openingHour, index) in times" :key="index">
-                            <openingHours/>
-                            {{ openingHour.start }}
+                        <div v-if="times.length">
+                            <b-field label="Openingstijden">
+                                <p class="control">
+                                    <span class="button is-static">M</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[0].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[0].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">D</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[1].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[1].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">W</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[2].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[2].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">D</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[3].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[3].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">V</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[4].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[4].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">Z</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[5].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[5].end"></b-input>
+                            </b-field>
+                            <b-field style="margin-top: -2vh;">
+                                <p class="control">
+                                    <span class="button is-static">Z</span>
+                                </p>
+                                <b-input placeholder="Openingstijd" v-model="times[6].start"></b-input>
+                                <b-input placeholder="Sluitingstijd" v-model="times[6].end"></b-input>
+                            </b-field>
                         </div>
                         <b-field label="Banner (optioneel)">
                             <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()">
@@ -58,8 +105,6 @@
 </template>
 
 <script>
-import openingHours from './openingHours.vue'
-
 export default {
     name: "storeOverview",
     data() {
@@ -78,9 +123,6 @@ export default {
             times: '',
             userId: localStorage.getItem('id')
         }
-    },
-    components: {
-        openingHours
     },
     mounted() {
         this.userName = localStorage.getItem('username');
@@ -127,7 +169,6 @@ export default {
             this.banner = await response.data.store.banner; 
             this.storename = await response.data.store.storename;
             this.times = await response.data.store.times;
-            console.log(this.times);
         },
         async submitFile() {
             this.date = Date.now();
@@ -166,7 +207,8 @@ export default {
                 contactLocationPlace: place,
                 contactLocationZip: zip,
                 contactEmail: mail,
-                contactPhone: phone 
+                contactPhone: phone,
+                times: this.times
             })
             // eslint-disable-next-line no-unused-vars
             .then(response => {
