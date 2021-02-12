@@ -42,7 +42,7 @@
                         </b-field>
                         <div style="margin-bottom: 1vh;">
                             <p class="has-text-danger">
-                                Vul uw openingstijden in het volgende format in: 18:00 (voorbeeld).
+                                Vul uw openingstijden in het volgende format in: 09:30 (voorbeeld).
                             </p>
                         </div>
                         <div v-if="times.length">
