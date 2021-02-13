@@ -78,7 +78,7 @@ export default {
             
             await this.$http.get(process.env.VUE_APP_API + '/products/' + this.id, { params: { key: this.key, time: this.date }})
             .then(async response => {
-                console.log(response);
+                this.$store.commit('addToCart', response.data.product);
             })
             .catch(error => {
                 console.log(error);

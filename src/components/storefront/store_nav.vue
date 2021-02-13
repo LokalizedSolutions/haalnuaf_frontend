@@ -11,7 +11,7 @@
             <b-navbar-item tag="div">
             <div class="buttons">
                 <b-button tag="router-link" :to="{ path: '/s/' + id + '/cart' }" class="button is-primary" icon-right="shopping-cart" icon-pack="fas">
-                    Uw winkelmand
+                    Uw winkelmand € {{ totalPrice }}
                 </b-button>
             </div>
             </b-navbar-item>
@@ -25,6 +25,17 @@ export default {
     data() {
         return {
             id: this.$route.params.id
+        }
+    },
+    computed: {
+        totalPrice() {
+            let total = 0;
+
+            for (let item of this.$store.state.cart) {
+                total += item.totalPrice;
+            }
+
+            return total.toFixed(2);
         }
     }
 }

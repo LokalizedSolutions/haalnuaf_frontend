@@ -14,13 +14,13 @@
                         <strong>Totaal prijs:</strong>
                     </div>
                     <div class="level-item">
-                        <strong>€ 250.00</strong>
+                        <strong>€ {{ totalPrice }}</strong>
                     </div>
                 </div>
             </div>
         </div>
         <div v-else>
-            <p class="has-text-danger">Geen producten gevonden in uw winkelwagen.</p>
+            <p class="has-text-danger">Geen producten gevonden in uw winkelwagen. {{ totalPrice }}</p>
         </div>
     </div>
 </template>
@@ -35,7 +35,18 @@ export default {
     },
     data() {
         return {
-            products: JSON.parse(localStorage.getItem('cart' + this.$route.params.id)) || ''
+            products: JSON.parse(localStorage.getItem('cart')) || ''
+        }
+    },
+    computed: {
+        totalPrice() {
+            let total = 0;
+
+            for (let item of this.$store.state.cart) {
+                total += item.totalPrice;
+            }
+
+            return total.toFixed(2);
         }
     }
 }
