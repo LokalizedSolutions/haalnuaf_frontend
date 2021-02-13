@@ -26,6 +26,9 @@ import stores from './components/dashboard/store.vue';
 // Storefront
 import storefront from './components/storefront/store.vue';
 import cart from './components/storefront/cart.vue'
+// Algemene voorwaarden & privacy verklaring
+import algemenevoorwaarden from './components/algemenevoorwaarden.vue';
+import privacyverklaring from './components/privacyverklaring.vue';
 
 const routes = [
   // MAIN routes
@@ -149,6 +152,16 @@ const routes = [
     path: '/s/:id/cart',
     name: 'cart',
     component: cart
+  },
+  // Algemene voorwaarden
+  {
+    path: '/algemenevoorwaarden',
+    component: algemenevoorwaarden
+  },
+  // Privacy verklaring
+  {
+    path: '/privacyverklaring',
+    component: privacyverklaring
   },
   // 404 generation for each none declared route
   { 
