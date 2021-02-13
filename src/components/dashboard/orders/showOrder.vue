@@ -69,7 +69,6 @@ export default {
         .then(response => {
             this.products = response.data.order.products; 
             this.order = response.data.order;
-            console.log(this.products);
         })
         .catch(error => {
             if(error.response.data.status === 400) {

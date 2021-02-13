@@ -6,9 +6,10 @@
                 <div class="content">
                     <h1 class="title is-4">Instellingen aanpassen</h1>
                     <div v-if="back_errors.length" style="margin-bottom: 1vh;">
-                        <p class="has-text-danger">Hey, er zijn wat fouten opgetreden!
-                            <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
-                        </p>
+                        <div class="has-text-danger">
+                            Hey, er zijn wat fouten opgetreden!
+                        </div>
+                        <span class="has-text-danger" v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
                     </div>
                     <form id="form" @submit.prevent="checkForm">
                         <b-field label="Bedrijfsnaam" :type="{'is-danger': true, 'is-danger': errors.has('company')}" :message="errors.first('company')">

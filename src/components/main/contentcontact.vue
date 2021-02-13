@@ -2,9 +2,10 @@
     <div>
         <p>Indien u een vraag heeft over ons systeem kan U ons altijd bereiken, ook ontvangen wij graag feedback. Wij doen ons best om zo spoedig mogelijk mailtjes te beantwoorden.</p>
         <div v-if="back_errors.length" style="margin-bottom: 1vh;">
-            <p class="has-text-danger">Hey, er zijn wat fouten opgetreden bij het verwerken van uw contactformulier!
-                <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
-            </p>
+            <div class="has-text-danger">
+                Hey, er zijn wat fouten opgetreden!
+            </div>
+            <span class="has-text-danger" v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
         </div>
         <div v-if="success.length" style="margin-bottom: 1vh;">
             <p class="has-text-success">Dank voor uw bericht, we gaan er zo spoedig mogelijk mee aan de slag.</p>
