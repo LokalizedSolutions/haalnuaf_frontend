@@ -20,7 +20,7 @@
             </div>
         </div>
         <div v-else>
-            <p class="has-text-danger">Geen producten gevonden in uw winkelwagen. {{ totalPrice }}</p>
+            <p class="has-text-danger">Geen producten gevonden in uw winkelwagen.</p>
         </div>
     </div>
 </template>
