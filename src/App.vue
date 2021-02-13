@@ -48,6 +48,7 @@ export default {
 .customtag {
   position: absolute;
   top: 1.5rem;
-  margin-left: 1.5rem;
+  right: 0;
+  margin-right: 1.5rem;
 }
 </style>
