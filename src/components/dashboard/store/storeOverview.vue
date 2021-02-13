@@ -204,7 +204,7 @@ export default {
 
             formData.append('file', this.file);
 
-            await this.$http.post(process.env.VUE_APP_API + "/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}})
+            await this.$http.post(process.env.VUE_APP_API + "/image", formData, { headers: { 'Content-Type': 'multipart/form-data'}}, { width: 1920, height: 1080 })
             .then(async response => {
                 const photo = await response.data.id; 
                 this.img = photo; 
