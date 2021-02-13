@@ -66,7 +66,15 @@ export default {
             
             await this.$http.get(process.env.VUE_APP_API + '/products/' + this.product.id, { params: { key: this.key, time: this.date }})
             .then(async response => {
-                this.$store.commit('addToCart', response.data.product);
+                if(response.data.product.max === -1) {
+                    this.$buefy.toast.open({
+                        duration: 1000,
+                        message: `Hey, dat product is uitverkocht.`,
+                        type: 'is-danger'
+                    })
+                } else {
+                    this.$store.commit('addToCart', response.data.product);
+                }
             })
             .catch(error => {
                 console.log(error);

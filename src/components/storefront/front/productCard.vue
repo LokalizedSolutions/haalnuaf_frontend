@@ -24,7 +24,7 @@
                         <p><strong>Beschrijving:</strong> {{ productDescription }}</p>
                     </div>
                     <div v-else>
-                        <p><strong>Beschrijving:</strong> Druk op het oogje.</p>
+                        <p><strong>Beschrijving:</strong> Druk op de ellipsis.</p>
                     </div>
                     <div v-if="max === -1">
                         <p class="has-text-danger"><strong>Max aantal: </strong>Uitverkocht</p>
@@ -44,7 +44,7 @@
                 <!--<b-button type="is-danger" icon-pack="fas" icon-right="trash-alt" @click=removeProduct()>
                     Verwijderen
                 </b-button>-->
-                <b-button v-if="productDescription.length > 24" type="is-white" icon-pack="fas" icon-right="eye" style="margin-left: 2%;" @click="showProductDescription()">
+                <b-button v-if="productDescription.length > 24" type="is-white" icon-pack="fas" icon-right="ellipsis-h" style="margin-left: 2%;" @click="showProductDescription()">
                 </b-button>
             </div>
         </div>
@@ -78,7 +78,15 @@ export default {
             
             await this.$http.get(process.env.VUE_APP_API + '/products/' + this.id, { params: { key: this.key, time: this.date }})
             .then(async response => {
-                this.$store.commit('addToCart', response.data.product);
+                if(response.data.product.max === -1) {
+                    this.$buefy.toast.open({
+                        duration: 1000,
+                        message: `Hey, dat product is uitverkocht.`,
+                        type: 'is-danger'
+                    })
+                } else {
+                    this.$store.commit('addToCart', response.data.product);
+                }
             })
             .catch(error => {
                 console.log(error);
