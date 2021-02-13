@@ -35,7 +35,7 @@ export default {
     },
     data() {
         return {
-            products: []
+            products: JSON.parse(localStorage.getItem('cart' + this.$route.params.id)) || ''
         }
     }
 }

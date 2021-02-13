@@ -3,14 +3,14 @@
         <div class="level-left">
             <div class="level-item">
                 <div>
-                    <h1 class="title is-6">Productnaam</h1>
-                    <p>Productomschrijving</p>
+                    <h1 class="title is-6">{{ product.name }}</h1>
+                    <p>{{ product.description }}</p>
                 </div>
             </div>
         </div>
         <div class="level-right">
             <div class="level-item">
-                <p>Prijs: € 50.00</p>
+                <p>€ {{ product.price }}</p>
             </div>
             <div class="level-item">
                 <b-field>
@@ -36,6 +36,12 @@ export default {
         return {
             amount: ''
         }
+    },
+    props: {
+        product: Object
+    },
+    mounted() {
+        console.log(this.product);
     }
 }
 </script>
