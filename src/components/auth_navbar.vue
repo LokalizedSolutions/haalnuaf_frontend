@@ -10,7 +10,7 @@
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
-            <b-button tag="router-link" :to="{ name: 'signup' }" class="button is-primary">
+            <b-button tag="router-link" :to="{ name: 'signup' }" class="button is-primary" disabled>
               <strong>Maak uw webshop</strong>
             </b-button>
             <b-button tag="router-link" :to="{ name : 'login' }" class="button is-white">
