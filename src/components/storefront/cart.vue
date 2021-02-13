@@ -4,10 +4,10 @@
         <hero :title="store.company" :description="store.story" :img="store.banner"/>
         <div class="container" style="margin-top: 2vh;">
             <div class="columns">
-                <div class="column is-three-quarters">
+                <div class="column is-two-thirds">
                     <orderView/>
                 </div>
-                <div class="column is-one-quarter">
+                <div class="column is-one-third">
                     <checkout/>
                 </div>
             </div>
