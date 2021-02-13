@@ -15,6 +15,9 @@
                         <strong>Totaalprijs: </strong>€ {{ order.price }}
                     </div>
                     <div>
+                        <strong>Order ID: </strong> {{ order.id.split('-')[0]}}
+                    </div>
+                    <div>
                         <strong>Afhaaltijd: </strong>Vanaf {{ new Date(order.time).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"})}} tot {{ new Date(order.time+(60000*30)).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"}) }}
                     </div>
                     <div>
