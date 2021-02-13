@@ -2,7 +2,7 @@
     <div>
         <topBar/>
         <div class="columns is-multiline">
-            <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :price="product.price" :img="product.photos[0]" :max="product.max"/>
+            <productCard v-for="(product, index) in limitedItems" :key="index" :productTitle="product.name" :productDescription="product.description" :id="product.id" :price="product.price" :img="product.photos[0]" :max="product.max"/>
         </div>
         <div v-if="!(limitNumber > products.length)">
             <b-button type="is-primary is-pulled-right" @click="limitNumber += 6">Laad meer items</b-button>
@@ -24,7 +24,8 @@ export default {
         return {
             storeId: '',
             products: [],
-            limitNumber: 6
+            limitNumber: 6,
+            cartArray: []
         }
     },
     async created() {

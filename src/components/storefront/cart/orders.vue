@@ -1,25 +1,26 @@
 <template>
     <div class="content">
         <h1 class="title is-4">Geselecteerde producten</h1>
-        <singleOrder/>
-        <singleOrder/>
-        <singleOrder/>
-        <singleOrder/>
-        <singleOrder/>
-        <div class="level">
-            <div class="level-left">
-                <div class="level-item">
-
+        <div v-if="products.length"> 
+            <singleOrder v-for="(product, index) in products" :key="index " :product="product" />
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <!--empty slot-->
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <strong>Totaal prijs:</strong>
+                    </div>
+                    <div class="level-item">
+                        <strong>€ 250.00</strong>
+                    </div>
                 </div>
             </div>
-            <div class="level-right">
-                <div class="level-item">
-                    <strong>Totaal prijs:</strong>
-                </div>
-                <div class="level-item">
-                    <strong>€ 250.00</strong>
-                </div>
-            </div>
+        </div>
+        <div v-else>
+            <p class="has-text-danger">Geen producten gevonden in uw winkelwagen.</p>
         </div>
     </div>
 </template>
@@ -31,6 +32,11 @@ export default {
     name: "orders",
     components: {
         singleOrder
+    },
+    data() {
+        return {
+            products: []
+        }
     }
 }
 </script>

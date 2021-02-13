@@ -38,9 +38,12 @@
                 </div>
             </div>
             <div class="button-box">
-                <b-button type="is-primary" icon-pack="fas" icon-right="shopping-cart" @click=edit()>
+                <b-button type="is-primary" icon-pack="fas" icon-right="shopping-cart" @click=addProduct()>
                     Toevoegen
                 </b-button>
+                <!--<b-button type="is-danger" icon-pack="fas" icon-right="trash-alt" @click=removeProduct()>
+                    Verwijderen
+                </b-button>-->
                 <b-button v-if="productDescription.length > 24" type="is-white" icon-pack="fas" icon-right="eye" style="margin-left: 2%;" @click="showProductDescription()">
                 </b-button>
             </div>
@@ -56,7 +59,8 @@ export default {
         productTitle: String,
         price: Number,
         img: String,
-        max: Number
+        max: Number,
+        id: String
     },
     methods: {
         showProductDescription() {
@@ -64,6 +68,20 @@ export default {
                 title: this.productTitle,
                 message: this.productDescription,
                 confirmText: 'Keer terug'
+            })
+        },
+        // add Product to cart
+        async addProduct() {
+            this.date = Date.now(); 
+            const crypto = require('crypto');
+            this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+            
+            await this.$http.get(process.env.VUE_APP_API + '/products/' + this.id, { params: { key: this.key, time: this.date }})
+            .then(async response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
             })
         }
     }
