@@ -13,7 +13,7 @@
                     </div>
                     <form id="form" @submit.prevent="checkForm">
                         <b-field label="Bedrijfsnaam" :type="{'is-danger': true, 'is-danger': errors.has('company')}" :message="errors.first('company')">
-                            <b-input v-validate="{ required: true, min: 3, max: 25, regex: /^[a-z0-9\-\_]+$/ }" v-model="company" name="company" type="text" placeholder="Vul hier uw nieuwe winkelnaam in..." icon="store" icon-pack="fas"></b-input>
+                            <b-input v-validate="'required'" v-model="company" name="company" type="text" placeholder="Vul hier uw nieuwe winkelnaam in..." icon="store" icon-pack="fas"></b-input>
                         </b-field>
                         <b-field label="Mailadres" :type="{'is-danger': true, 'is-danger': errors.has('contactMail')}" :message="errors.first('contactMail')">
                             <b-input v-validate="'email'" v-model="contactMail" name="contactMail" type="text" placeholder="Vul hier uw mailadres in..." icon-pack="fas" icon="envelope"></b-input>
