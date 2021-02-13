@@ -36,6 +36,12 @@
                         <b-field label="Telefoonnummer" :type="{'is-danger': true, 'is-danger': errors.has('contactPhone')}" :message="errors.first('contactPhone')">
                             <b-input v-validate="{ required: true, regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
                         </b-field>
+                        <!--afhaaltijd-->
+                        <b-field label="Ophaaldatum selecteren">
+                            <b-select placeholder="selecteer een dag" expanded>
+                                <option v-for="(i, index) in 8" :key="index">{{ nextComingDates(i -1) }}</option>
+                            </b-select>
+                        </b-field>
                         <!--submit form-->
                         <p class="control">
                             <b-button class="is-pulled-right" style="margin-bottom: 3vh; margin-top: 2vh;" label="Bestelling aanmaken" type="is-primary" native-type="submit" value="submit"/>
@@ -128,6 +134,16 @@ export default {
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
+        },
+        // Dates
+        nextComingDates(i) {
+            this.date = new Date(); 
+            this.day = this.date.getUTCDate() + i + ' ' + this.getMonth(this.date.getUTCMonth());
+            return this.day;
+        },
+        getMonth(i) {
+            this.months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
+            return this.months[i];
         }
     }
 }
