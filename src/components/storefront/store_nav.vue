@@ -11,7 +11,7 @@
             <b-navbar-item tag="div">
             <div class="buttons">
                 <b-button tag="router-link" :to="{ path: '/s/' + id + '/cart' }" class="button is-primary" icon-right="shopping-cart" icon-pack="fas">
-                    Uw winkelmand (€126,30)
+                    Uw winkelmand
                 </b-button>
             </div>
             </b-navbar-item>

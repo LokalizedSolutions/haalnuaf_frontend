@@ -42,7 +42,7 @@ export default {
             minDatetime: min,
             maxDatetime: max,
             incrementMinutes: 30,
-            time: Date.now()
+            time: new Date()
         }
     }
 }
