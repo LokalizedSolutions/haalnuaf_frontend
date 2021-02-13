@@ -5,7 +5,11 @@
             <div class="card-image">
                 <figure class="image is-4by3">
                 <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" alt="Placeholder image">
+                
                 </figure>
+                <span class="tag is-primary customtag is-medium">
+                    € {{ price }}
+                </span>
             </div>
             <!--content-->
             <div class="card-content">
@@ -14,13 +18,6 @@
                         <div class="level-left">
                             <div class="level-item">
                                 <h1 class="title is-4">{{ productTitle }}</h1>
-                            </div>
-                        </div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <span class="tag is-primary">
-                                    € {{ price }}
-                                </span>
                             </div>
                         </div>
                     </div>

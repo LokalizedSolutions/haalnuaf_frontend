@@ -45,4 +45,9 @@ export default {
     display: flex;
   }
 }
+.customtag {
+  position: absolute;
+  top: 1.5rem;
+  margin-left: 1.5rem;
+}
 </style>
