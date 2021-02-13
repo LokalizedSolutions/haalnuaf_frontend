@@ -36,7 +36,7 @@
                             </b-field>
                             <!--submit form-->
                             <p class="control">
-                                <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Product aanmaken" type="is-primary" native-type="submit" value="submit"/>
+                                <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Product bewerken" type="is-primary" native-type="submit" value="submit"/>
                             </p>
                         </form>
                     </div>
