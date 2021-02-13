@@ -36,7 +36,23 @@ export default {
         product: Object
     },
     mounted() {
-        console.log(this.product);
+        this.date = Date.now(); 
+        const crypto = require('crypto');
+        this.key = encodeURIComponent(crypto.createHash('sha256').update(this.date + "---" + process.env.VUE_APP_SALT).digest('base64'));
+    
+        this.$http.get(process.env.VUE_APP_API + '/stores/' + this.$route.params.id, { params: { key: this.key, time: this.date }})
+        .then(response => {
+            if(response.data.store.storeid === this.product.storeid) {
+                return true;
+            } else {
+                localStorage.removeItem('cart');
+                localStorage.removeItem('cartCount');
+                this.$router.go();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
     },
     methods: {
         async removeFromCart() {
