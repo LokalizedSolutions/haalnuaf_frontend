@@ -37,10 +37,13 @@
                             <b-input v-validate="{ required: true, regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
                         </b-field>
                         <!--afhaaltijd-->
-                        <b-field label="Ophaaldatum selecteren">
-                            <b-select placeholder="selecteer een dag" expanded>
-                                <option v-for="(i, index) in 8" :key="index">{{ nextComingDates(i -1) }}</option>
-                            </b-select>
+                        <b-field label="Selecteer afhaaldatum + tijd">
+                            <b-datetimepicker inline v-model="datetime"
+                                placeholder="Click to select..."
+                                :min-datetime="minDatetime"
+                                :max-datetime="maxDatetime"
+                                :timepicker="{hourFormat: '24'}">
+                            </b-datetimepicker>
                         </b-field>
                         <!--submit form-->
                         <p class="control">
@@ -64,7 +67,15 @@ export default {
     },
     // Data
     data() {
+        const min = new Date()
+            min.setDate(min.getUTCDate())
+            min.setMinutes(-780)
+            min.setSeconds(0)
+        const max = new Date()
+            max.setDate(max.getUTCDate() + 7)
+            max.setMinutes(659)
         return {
+
             productArray: '',
             selected: '',
             selectedProducts: [],
@@ -72,7 +83,10 @@ export default {
             blob: [],
             contactName: '',
             contactMail: '',
-            contactPhone: ''
+            contactPhone: '',
+            minDatetime: min,
+            maxDatetime: max,
+            datetime: new Date()
         }
     },
     // On component creation
@@ -126,7 +140,7 @@ export default {
             this.key = this.apiKey();
             this.id = localStorage.getItem('id');
 
-            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: this.contactName, contactEmail: this.contactMail, contactPhone: this.contactPhone, products: this.blob, gettime: 1612979000})
+            this.$http.post(process.env.VUE_APP_API + '/orders/create', { key: this.key, time: this.date, storeid: this.id, contactName: this.contactName, contactEmail: this.contactMail, contactPhone: this.contactPhone, products: this.blob, gettime: Date.parse(this.datetime)})
             // eslint-disable-next-line no-unused-vars
             .then(response => {
                 this.$router.push({ name: 'overviewOrders' });
@@ -134,16 +148,6 @@ export default {
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
             })
-        },
-        // Dates
-        nextComingDates(i) {
-            this.date = new Date(); 
-            this.day = this.date.getUTCDate() + i + ' ' + this.getMonth(this.date.getUTCMonth());
-            return this.day;
-        },
-        getMonth(i) {
-            this.months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
-            return this.months[i];
         }
     }
 }
