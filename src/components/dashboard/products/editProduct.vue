@@ -14,10 +14,10 @@
                         <form id="form" @submit.prevent="checkForm">
                             <!--productname-->
                             <b-field label="Productnaam" :type="{'is-danger': true, 'is-danger': errors.has('productName')}" :message="errors.first('productName')">
-                                <b-input v-validate="'required'" name="productName" type="text" v-model="productName" placeholder="Vul hier uw productnaam in" icon="heading" icon-pack="fas"></b-input>
+                                <b-input v-validate="'required'" name="productName" type="text" v-model="productName" placeholder="Vul hier de productnaam in.." icon="heading" icon-pack="fas"></b-input>
                             </b-field>
                             <b-field label="Productbeschrijving (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('productDescription')}" :message="errors.first('productDescription')">
-                                <b-input name="productDescription" type="textarea" v-model="productDescription" placeholder="Vul hier uw productbeschrijving in"></b-input>
+                                <b-input name="productDescription" type="textarea" v-model="productDescription" placeholder="Vul hier de productbeschrijving in.."></b-input>
                             </b-field>
                             <b-field label="Prijs (optioneel)" :type="{'is-danger': true, 'is-danger': errors.has('price')}" :message="errors.first('price')">
                                 <b-input v-validate="'decimal:2|min_value:0'" name="price" type="text" v-model="price" placeholder="Prijs" icon="euro-sign" icon-pack="fas"></b-input>
@@ -27,7 +27,7 @@
                             </b-field>
                             <div style="margin-bottom: 1vh;">
                                 <p class="has-text-danger">
-                                    Het veld, max, staat voor de hoeveelheid producten die u beschikbaar heeft. U kiest -1 voor status uitverkocht, 0 voor status oneindig en een ander getal om het precies aan te geven.
+                                    Het veld max staat voor de hoeveelheid producten die u beschikbaar heeft. U kiest -1 voor status uitverkocht, 0 voor status oneindig en een ander getal om het precies aan te geven.
                                 </p>
                             </div>
                             <!--upload-->
@@ -76,7 +76,7 @@ export default {
                         this.apiCall(this.productName, this.productDescription, this.price, this.max);
                     }
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },

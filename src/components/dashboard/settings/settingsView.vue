@@ -13,16 +13,16 @@
                     </div>
                     <form id="form" @submit.prevent="checkForm">
                         <b-field label="Bedrijfsnaam" :type="{'is-danger': true, 'is-danger': errors.has('company')}" :message="errors.first('company')">
-                            <b-input v-validate="'required'" v-model="company" name="company" type="text" placeholder="Vul hier uw nieuwe winkelnaam in..." icon="store" icon-pack="fas"></b-input>
+                            <b-input v-validate="'required'" v-model="company" name="company" type="text" placeholder="Vul hier de winkelnaam in..." icon="store" icon-pack="fas"></b-input>
                         </b-field>
                         <b-field label="Mailadres" :type="{'is-danger': true, 'is-danger': errors.has('contactMail')}" :message="errors.first('contactMail')">
-                            <b-input v-validate="'email'" v-model="contactMail" name="contactMail" type="text" placeholder="Vul hier uw mailadres in..." icon-pack="fas" icon="envelope"></b-input>
+                            <b-input v-validate="'email'" v-model="contactMail" name="contactMail" type="text" placeholder="Vul hier het mailadres in..." icon-pack="fas" icon="envelope"></b-input>
                         </b-field>
                         <b-field label="Nieuw wachtwoord" :type="{'is-danger': true, 'is-danger': errors.has('password')}" :message="errors.first('password')"> 
                             <b-input v-validate="{ min: 8, max: 50, regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,50}$/ }" v-model="password" type="password" name="password" placeholder="Vul hier uw nieuwe wachtwoord in..." icon="key" icon-pack="fas"></b-input>
                         </b-field>
                         <div>
-                            <p class="has-text-danger" style="margin-bottom: 1vh;">Hey, voor het wachtwoord moet U gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer.</p>
+                            <p class="has-text-danger" style="margin-bottom: 1vh;">Voor het wachtwoord moet u gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer.</p>
                         </div>
                         <p class="control">
                             <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Instellingen updaten" type="is-primary" native-type="submit" value="submit"/>
@@ -42,7 +42,7 @@
                     </div>
                     <form id="delete" @submit.prevent="deleteAccount">
                         <div>
-                            <p class="has-text-danger" style="margin-bottom: 1vh;">Indien U uw account met alle bijbehorende gegevens wil verwijderen kan dat met deze functie, ben er bewust van dat deze beslissing NIET terug gedraaid kan worden.</p>
+                            <p class="has-text-danger" style="margin-bottom: 1vh;">Indien u uw account met alle bijbehorende gegevens wil verwijderen kan dat hier. Wees er bewust van dat deze beslissing <strong>niet</strong> teruggedraaid kan worden.</p>
                         </div>
                         <p class="control">
                             <b-button expanded class="is-pulled-right" style="margin-bottom: 3vh;" label="Account verwijderen" type="is-danger" native-type="submit" value="submit"/>
@@ -87,7 +87,7 @@ export default {
         deleteAccount() {
            this.$buefy.dialog.confirm({
                 title: 'Product verwijderen',
-                message: 'Bent u er zeker van dat u uw account wil <b>verwijderen</b>? Het verwijderen kan niet ongedaan gemaakt worden.',
+                message: 'Weet u zeker dat u uw account wilt <b>verwijderen</b>? Het verwijderen kan niet ongedaan gemaakt worden.',
                 confirmText: 'Verwijder',
                 type: 'is-danger',
                 onConfirm: () => this.remove()

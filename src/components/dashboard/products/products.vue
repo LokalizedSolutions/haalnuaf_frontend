@@ -9,7 +9,7 @@
             </div>
         </div>
         <div v-else>
-            <p class="has-text-danger">Hey, er zijn wat fouten opgetreden bij het inladen van de producten!
+            <p class="has-text-danger">Er zijn op dit moment geen orders om in te laden.
                 <span v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
             </p>
         </div>

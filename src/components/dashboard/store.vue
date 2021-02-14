@@ -1,7 +1,7 @@
 <template>
     <div>
         <dashboardnav/>
-        <hero title="Uw winkel" description="In het uw winkel tabje houdt U al uw winkel instellingen bij. Bewerk uw locatie, voeg een info kopje toe of upload een mooie banner."/>
+        <hero title="Uw winkel" description="Hier houdt u alle winkel instellingen bij. Zo kunt u uw winkelnaam aanpassen, locatie toevoegen en meer."/>
         <div class="container" style="margin-top: 2vh;">
             <storeOverview/>
         </div>

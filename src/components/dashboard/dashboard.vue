@@ -1,7 +1,7 @@
 <template>
     <div>
         <dashboardnav/>
-        <hero :title="'Welkom, ' + username + '.'" description="Op uw dashboard voert U alle acties uit die nodig zijn om uw bestellingen bij te houden. Producten te plaatsen, verwijderen of bewerken. Of om uw winkel details te wijzigen."/>
+        <hero :title="'Welkom terug, ' + username + '.'" description="Op uw dashboard voert u alle acties uit die nodig zijn om uw bestellingen en producten bij te houden."/>
         <foot/>
     </div>
 </template>

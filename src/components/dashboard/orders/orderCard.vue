@@ -6,7 +6,7 @@
                 <div class="content">
                     <h1 class="title is-5">{{ order.contactName }}</h1>
                     <div>
-                        <strong>Mail: </strong>{{ order.contactEmail }}
+                        <strong>Mailadres: </strong>{{ order.contactEmail }}
                     </div>
                     <div>
                         <strong>Nummer: </strong>{{ order.contactPhone }}
@@ -21,7 +21,7 @@
                         <strong>Afhaaltijd: </strong>Vanaf {{ new Date(order.time).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"})}} tot {{ new Date(order.time+(60000*30)).toLocaleString("nl-NL", {timeZone: "Europe/Amsterdam"}) }}
                     </div>
                     <div>
-                        <strong>Producten: </strong> Druk op bekijken
+                        <strong>Producten: </strong> Druk op 'bekijken'
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@ export default {
         complete() {
             this.$buefy.dialog.confirm({
                 title: 'Order voltooien',
-                message: 'Bent u er zeker van dat u deze order wil <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de order uit uw overzicht.',
+                message: 'Weet u zeker dat u deze bestelling wilt <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de bestelling uit uw overzicht.',
                 confirmText: 'Voltooien',
                 type: 'is-success',
                 onConfirm: () => this.removeOrder()

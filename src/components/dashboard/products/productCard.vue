@@ -4,7 +4,7 @@
             <!--image-->
             <div class="card-image">
                 <figure class="image is-4by3">
-                <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" alt="Placeholder image">
+                <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" alt="Product foto">
                 
                 </figure>
                 <span class="tag is-primary customtag is-medium">
@@ -67,7 +67,7 @@ export default {
         popUp() {
             this.$buefy.dialog.confirm({
                 title: 'Product verwijderen',
-                message: 'Bent u er zeker van dat u dit product wil <b>verwijderen</b>? Het verwijderen kan niet ongedaan gemaakt worden.',
+                message: 'Weet u zeker dat u dit product wil <b>verwijderen</b>? Het verwijderen kan niet ongedaan gemaakt worden.',
                 confirmText: 'Verwijder',
                 type: 'is-danger',
                 onConfirm: () => this.remove()

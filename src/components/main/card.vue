@@ -9,7 +9,7 @@
             </div>
             <div v-if="link" class="button-box">
                 <a :href="link">
-                    <b-button type="is-primary">
+                    <b-button type="is-primary" disabled>
                         <strong>{{ button }}</strong>
                         <template v-if="pack">
                             <b-icon :pack="pack" :icon="icon"></b-icon>

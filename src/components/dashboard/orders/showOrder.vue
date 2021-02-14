@@ -80,7 +80,7 @@ export default {
         complete() {
             this.$buefy.dialog.confirm({
                 title: 'Order voltooien',
-                message: 'Bent u er zeker van dat u deze order wil <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de order uit uw overzicht.',
+                message: 'Weet u zeker dat u deze bestelling wilt <b>voltooien</b>? Het voltooien kan niet ongedaan gemaakt worden. Na het voltooien verdwijnt de bestelling uit uw overzicht.',
                 confirmText: 'Voltooien',
                 type: 'is-success',
                 onConfirm: () => this.removeOrder()
