@@ -68,8 +68,8 @@ export default {
             .then(async response => {
                 if(response.data.product.max === -1) {
                     this.$buefy.toast.open({
-                        duration: 1000,
-                        message: `Hey, dat product is uitverkocht.`,
+                        duration: 2000,
+                        message: `Dat product is uitverkocht.`,
                         type: 'is-danger'
                     })
                 } else {

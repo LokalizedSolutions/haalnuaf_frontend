@@ -14,7 +14,7 @@
                         <!--product loading-->
                         <b-field label="Voeg producten toe">
                             <b-select placeholder="Select a character" expanded v-model="selected">
-                                <option disabled value="">Kies een product uit</option>
+                                <option disabled value="">Kies een product</option>
                                 <option v-for="(product, index) in productArray" :key="index" :value="product">{{ product.name }}</option>
                             </b-select>
                             <p class="control">
@@ -22,25 +22,25 @@
                             </p>
                         </b-field>
                         <div> 
-                            <p class="has-text-danger" style="margin-bottom: 1vh;">U bevestigd de hoeveelheid producten door op het groene vinkje te drukken. Kijk ook voor het verzenden altijd goed na of de producten en aantallen kloppen.</p>
+                            <p class="has-text-danger" style="margin-bottom: 1vh;">U bevestigt de hoeveelheid producten door op het groene vinkje te drukken. Kijk ook voor het verzenden altijd goed na of de producten en aantallen kloppen.</p>
                         </div>
                         <div v-if="selectedProducts.length">
                             <selectedProductsLevel v-for="(product, index) in selectedProducts" :key="index" :productName="product.name" :price="product.price" :baseArray="product"/>
                         </div>
                         <!--contact fields-->
                         <b-field label="Naam + achternaam" :type="{'is-danger': true, 'is-danger': errors.has('contactName')}" :message="errors.first('contactName')">
-                            <b-input v-validate="'required'" name="contactName" type="text" v-model="contactName" placeholder="Vul hier naam + achternaam in..." icon="heading" icon-pack="fas"></b-input>
+                            <b-input v-validate="'required'" name="contactName" type="text" v-model="contactName" placeholder="Vul hier de naam + achternaam in..." icon="heading" icon-pack="fas"></b-input>
                         </b-field>
                         <b-field label="Mailadres" :type="{'is-danger': true, 'is-danger': errors.has('contactMail')}" :message="errors.first('contactMail')">
                             <b-input v-validate="'required|email'" name="contactMail" type="text" v-model="contactMail" placeholder="Vul hier het mailadres in..." icon="heading" icon-pack="fas"></b-input>
                         </b-field>
                         <b-field label="Telefoonnummer" :type="{'is-danger': true, 'is-danger': errors.has('contactPhone')}" :message="errors.first('contactPhone')">
-                            <b-input v-validate="{ required: true, regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier uw telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
+                            <b-input v-validate="{ required: true, regex: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{9}$)/ }" v-model="contactPhone" name="contactPhone" type="text" placeholder="Vul hier het telefoonnummer in..." icon-pack="fas" icon="phone"></b-input>
                         </b-field>
                         <!--afhaaltijd-->
-                        <b-field label="Selecteer afhaaldatum + tijd">
+                        <b-field label="Selecteer de afhaaldatum + tijd">
                             <b-datetimepicker inline v-model="datetime"
-                                placeholder="Click to select..."
+                                placeholder="Klik om te selecteren"
                                 :min-datetime="minDatetime"
                                 :max-datetime="maxDatetime"
                                 :timepicker="{hourFormat: '24'}">
@@ -116,10 +116,10 @@ export default {
                     if (this.blob.length) {
                         this.apiCall();
                     } else {
-                        this.back_errors.push('U heeft geen producten toegevoegd aan de bestelling of de hoeveelheid niet bevestigd, probeer het opnieuw.');
+                        this.back_errors.push('U heeft geen producten toegevoegd aan de bestelling of de hoeveelheid niet bevestigd. Probeer het opnieuw.');
                     }
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },
@@ -130,7 +130,7 @@ export default {
                 if(this.selectedProducts.findIndex(x => x.name === this.selected.name) === -1) {
                     this.selectedProducts.push(this.selected);
                 } else {
-                    this.back_errors.push('U kan niet 2x hetzelfde product toevoegen.');
+                    this.back_errors.push('U kan niet twee keer hetzelfde product toevoegen.');
                 }
             } else {
                 this.back_errors.push('U heeft geen product geselecteerd.');

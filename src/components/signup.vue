@@ -37,7 +37,7 @@
                                     </b-field>
 
                                     <div>
-                                        <p class="has-text-danger" style="margin-bottom: 1vh;">Hey, voor het wachtwoord moet U gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer.</p>
+                                        <p class="has-text-danger" style="margin-bottom: 1vh;">Voor het wachtwoord moet u gebruik maken van minimaal één hoofdletter, kleine letter, speciaal teken en cijfer.</p>
                                     </div>
                                     <p class="control">
                                         <b-button class="is-pulled-right" style="margin-bottom: 3vh;" label="Registreren" type="is-primary" native-type="submit" value="submit"/>

@@ -70,7 +70,7 @@ export default {
                 if (result) {
                     this.apiCall(this.mail, this.password);
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },

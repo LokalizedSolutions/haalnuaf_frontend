@@ -43,7 +43,7 @@
                         <div class="card-content">
                             <div class="content">
                                 <h1 class="title is-4">Dashboard</h1>
-                                <p>Via ons dashboard houdt u uw winkel bij. Zo heeft u de mogelijkheid tot het beheren van uw winkel, uw producten en de bestellingen die bij u worden gedaan.</p>
+                                <p>Via ons dashboard houdt u uw winkel met gemak bij. Zo heeft u de mogelijkheid tot het beheren van uw winkel, uw producten en de bestellingen die bij u worden gedaan.</p>
                             </div>
                         </div>
                     </div> 

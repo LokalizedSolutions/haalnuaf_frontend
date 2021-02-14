@@ -1,7 +1,7 @@
 <template>
     <div>
         <dashboardnav/>
-        <hero title="Producten" description="In ons producten tabje houdt U al uw producten bij. Zie het overzicht van alle producten, voeg nieuwe producten toe, bewerk producten of verwijder producten."/>
+        <hero title="Producten" description="Hier houdt u alle producten bij. U kunt producten aanmaken, bekijken, verwijderen en aanpassen."/>
         <div class="container">
             <productView style="margin-top: 2.5vh;" />
         </div>

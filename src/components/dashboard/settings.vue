@@ -1,7 +1,7 @@
 <template>
     <div>
         <dashboardnav/>
-        <hero title="Instellingen" description="Via dit tabje kan U uw account instellingen wijzigen, uw wachtwoord, mail en meer."/>
+        <hero title="Instellingen" description="Hier kan u uw instellingen wijzigen. Zo past u gemakkelijk uw bedrijfsnaam en andere dingen aan."/>
         <div class="container" style="margin-top: 2vh;">
             <settingsView/>
         </div>

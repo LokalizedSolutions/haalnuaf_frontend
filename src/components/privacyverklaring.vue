@@ -13,9 +13,9 @@
                             <br>
                         <p><strong>Contactgegevens:</strong>
                         <br>
-                        https://haalnuaf.nl
+                        <a href="https://lokalized.nl">https://lokalized.nl</a>
                         <br>
-                        info@lokalized.nl</p>
+                        <a href="mailto:info@lokalized.nl">info@lokalized.nl</a></p>
                         </div>
                         <div>
                             <br>
@@ -37,7 +37,7 @@
                         <strong>Bijzondere en/of gevoelige persoonsgegevens die wij verwerken</strong>
                         </div>
                         <div>
-                        Onze website en dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar. Tenzij ze toestemming hebben van ouders of voogd. We kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders dan ook aan betrokken te zijn bij de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen verzameld worden zonder ouderlijke toestemming. Als u er van overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via gegevens@lokalized.nl, dan verwijderen wij deze informatie.
+                        Onze website en dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar. Tenzij ze toestemming hebben van ouders of voogd. We kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders dan ook aan betrokken te zijn bij de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen verzameld worden zonder ouderlijke toestemming. Als u er van overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via <a href="mailto:gegevens@lokalized.nl">gegevens@lokalized.nl</a>, dan verwijderen wij deze informatie.
                         </div>
                         <div>
                             <br>
@@ -78,7 +78,7 @@
                         <strong>Gegevens inzien, aanpassen of verwijderen</strong>
                         <div>U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Dit kunt u zelf doen via de persoonlijke instellingen van uw account, op voorwarde dat u een account heeft. Daarnaast heeft u het recht om uw eventuele toestemming voor de gegevensverwerking in te trekken of bezwaar te maken tegen de verwerking van uw persoonsgegevens door ons bedrijf en heeft u het recht op gegevensoverdraagbaarheid. Dat betekent dat u bij ons een verzoek kunt indienen om de persoonsgegevens waarover wij van u beschikken in een computerbestand naar u of een ander, door u genoemde organisatie, te sturen, mits deze data nog beschikbaar is voor ons.
 
-                        Wilt u gebruik maken van uw recht op bezwaar en/of recht op gegevensoverdraagbaarheid of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar gegevens@lokalized.nl. 
+                        Wilt u gebruik maken van uw recht op bezwaar en/of recht op gegevensoverdraagbaarheid of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar <a href="mailto:gegevens@lokalized.nl">gegevens@lokalized.nl</a>. 
 
                         Om er zeker van te zijn dat het verzoek tot inzage door u is gedaan, vragen wij u een kopie van uw identiteitsbewijs bij het verzoek mee te sturen. Maak in deze kopie uw pasfoto, MRZ (machine readable zone, de strook met nummers onderaan het paspoort), paspoortnummer en Burgerservicenummer (BSN) zwart. Dit ter bescherming van uw privacy. haalnuaf.nl zal zo snel mogelijk, maar in ieder geval binnen vier weken, op uw verzoek reageren.
 
@@ -86,7 +86,7 @@
                         </div>
                             <br>
                         <strong>Hoe wij persoonsgegevens beveiligen</strong>
-                        <div>haalnuaf.nl neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen zijn van misbruik, neem dan contact op met onze klantenservice of via gegevens@lokalized.nl</div>
+                        <div>haalnuaf.nl neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen zijn van misbruik, neem dan contact op met onze klantenservice of via <a href="mailto:gegevens@lokalized.nl">gegevens@lokalized.nl</a></div>
                     </div>
                 </div>
             </div>

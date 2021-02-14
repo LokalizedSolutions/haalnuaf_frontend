@@ -43,7 +43,7 @@
                         </b-field>
                         <div style="margin-bottom: 1vh;">
                             <p class="has-text-danger">
-                                Vul uw openingstijden in het volgende format in: 09:30 (voorbeeld).
+                                Vul uw openingstijden als volgt in: 09:30 of 14:30.
                             </p>
                         </div>
                         <div v-if="times.length">
@@ -168,7 +168,7 @@ export default {
                         this.apiUpdate(this.storename, this.story, this.contactStreet, this.contactZip, this.contactPlace, this.contactMail, this.contactPhone);
                     }
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },

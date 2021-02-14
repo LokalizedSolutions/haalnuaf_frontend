@@ -19,7 +19,7 @@
             </b-field>
             <b-field label="Afhaaldatum + tijd" :type="{'is-danger': true, 'is-danger': errors.has('time')}" :message="errors.first('time')">
                 <b-datetimepicker
-                    v-validate="'required'" name="time" v-model="time" inline placeholder="Click to select..."
+                    v-validate="'required'" name="time" v-model="time" inline placeholder="Klik om te selecteren.."
                     :min-datetime="minDatetime"
                     :max-datetime="maxDatetime"
                     :timepicker="{ hourFormat: '24', incrementMinutes }">
@@ -68,7 +68,7 @@ export default {
                         this.back_errors.push('U heeft geen producten geselecteerd.');
                     }
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },

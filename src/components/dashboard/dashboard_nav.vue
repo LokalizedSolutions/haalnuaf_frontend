@@ -11,11 +11,11 @@
         <b-navbar-item tag="router-link" :to="{ name: 'overviewProduct' }">
           Producten
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ name: 'dashboard_store' }">
-          Uw winkel
-        </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ name: 'overviewOrders' }">
           Bestellingen
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'dashboard_store' }">
+          Uw winkel
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/s/' + username }">
           Ga naar uw webshop

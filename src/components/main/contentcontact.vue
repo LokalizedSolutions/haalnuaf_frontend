@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Indien u een vraag heeft over ons systeem kan U ons altijd bereiken, ook ontvangen wij graag feedback. Wij doen ons best om zo spoedig mogelijk mailtjes te beantwoorden.</p>
+        <p>Indien u een vraag heeft over ons systeem kunt u ons altijd bereiken, ook ontvangen wij graag feedback. Wij doen ons best om zo spoedig mogelijk mailtjes te beantwoorden.</p>
         <div v-if="back_errors.length" style="margin-bottom: 1vh;">
             <div class="has-text-danger">
                 Hey, er zijn wat fouten opgetreden!
@@ -8,7 +8,7 @@
             <span class="has-text-danger" v-for="back_error in back_errors" :key="back_error">{{ back_error }} </span>
         </div>
         <div v-if="success.length" style="margin-bottom: 1vh;">
-            <p class="has-text-success">Dank voor uw bericht, we gaan er zo spoedig mogelijk mee aan de slag.</p>
+            <p class="has-text-success">Bedankt voor uw bericht, we gaan er zo spoedig mogelijk mee aan de slag.</p>
         </div>
         <form id="form" @submit.prevent="checkForm">
             <b-field label="Naam + achternaam" :type="{'is-danger': true, 'is-danger': errors.has('name')}" :message="errors.first('name')">
@@ -57,7 +57,7 @@ export default {
                     this.mail = '';
                     this.message = '';
                 } else {
-                    this.back_errors.push('Je hebt niet alle velden correct ingevuld, probeer het opnieuw.');
+                    this.back_errors.push('Je hebt niet alle velden correct ingevuld. Probeer het opnieuw.');
                 }
             });
         },
@@ -68,7 +68,7 @@ export default {
             // Send axios request (axios is under this.$http)
             this.$http.post(process.env.VUE_APP_API + "/mail", { key: this.key, time: this.date, email: mail, name: name, message: message })
                 .then(response => this.success.push('Gelukt' + response))
-                .catch(error => this.back_errors.push('Er is iets fout gegaan met onze backend, probeer het later opnieuw. Statuscode: ' + error.response.data.status));
+                .catch(error => this.back_errors.push('Er is iets fout gegaan met ons form. Probeer het later opnieuw of stuur een mailtje naar info@lokalized.nl. Statuscode: ' + error.response.data.status));
         }
     }
 }
