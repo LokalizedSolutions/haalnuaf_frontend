@@ -85,6 +85,14 @@ export default {
                 console.log(error);
             })
             this.product.amount++; 
+        },
+        async minProduct() {
+            await this.$store.commit('minCart', this.product, this.ind);
+            await this.product.amount--;
+            if(this.product.amount === 0) {
+                this.$store.commit('removeFromCart', this.ind);
+                this.$router.go();
+            }
         }
     },
     computed: {

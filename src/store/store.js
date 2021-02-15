@@ -47,6 +47,17 @@ const store = new Vuex.Store({
             state.cartCount++;
             this.commit('saveCart');
         },
+        minCart(state, item) {
+            let found = state.cart.find(x => x.name == item.name);
+
+            if (found) {
+                found.amount--;
+                found.totalPrice = found.amount * found.price;
+            }
+
+            state.cartCount--;
+            this.commit('saveCart');
+        },
         removeFromCart(state, ind) {
             state.cart.splice(ind, 1);
             this.commit('saveCart');
