@@ -25,6 +25,13 @@
                     :timepicker="{ hourFormat: '24', incrementMinutes }">
                 </b-datetimepicker>
             </b-field>
+            <b-field label=""
+                :type="{'is-danger': errors.has('flag-terms')}"
+                :message="{'Ga akkoord met onze voorwaarden om door te gaan.' : errors.firstByRule('flag-terms', 'required')}">
+                <b-checkbox v-model="flagTerms" name="flag-terms" v-validate="'required:false'">
+                    Ik ga akkoord met de <router-link to="/privacyverklaring">Privacy voorwaarden</router-link> en <router-link to="/algemenevoorwaarden">Algemene voorwaarden</router-link> van haalnuaf
+                </b-checkbox>
+            </b-field>
             <p class="control">
                 <b-button expanded label="Bestelling afronden" type="is-primary" native-type="submit" value="submit"/>
             </p>
