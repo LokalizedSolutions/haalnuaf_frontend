@@ -47,13 +47,8 @@ const store = new Vuex.Store({
             state.cartCount++;
             this.commit('saveCart');
         },
-        removeFromCart(state, item) {
-            let index = state.cart.indexOf(item);
-            console.log(index);
-        
-            if (index === -1) {
-                state.cart.splice(index, 1);
-            }
+        removeFromCart(state, ind) {
+            state.cart.splice(ind, 1);
             this.commit('saveCart');
         },
         saveCart(state) {

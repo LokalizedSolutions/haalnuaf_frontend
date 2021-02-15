@@ -2,7 +2,7 @@
     <div class="content">
         <h1 class="title is-4">Geselecteerde producten</h1>
         <div v-if="products.length"> 
-            <singleOrder v-for="(product, index) in products" :key="index " :product="product" />
+            <singleOrder v-for="(product, ind) in products" :key="ind" :product="product" :ind="ind"/>
             <div class="level">
                 <div class="level-left">
                     <div class="level-item">

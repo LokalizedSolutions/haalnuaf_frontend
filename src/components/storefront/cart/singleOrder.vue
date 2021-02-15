@@ -33,7 +33,8 @@ export default {
         }
     },
     props: {
-        product: Object
+        product: Object,
+        ind: Number
     },
     mounted() {
         this.date = Date.now(); 
@@ -56,7 +57,7 @@ export default {
     },
     methods: {
         async removeFromCart() {
-            await this.$store.commit('removeFromCart', this.product);
+            await this.$store.commit('removeFromCart', this.ind);
             this.$router.go();
         },
         async addProduct() {
