@@ -81,13 +81,21 @@ export default {
                         type: 'is-danger'
                     })
                 } else {
-                    this.$store.commit('addToCart', response.data.product);
+                    if(response.data.product.max > 0 && response.data.product.max === this.product.amount) {
+                        this.$buefy.toast.open({
+                            duration: 2000,
+                            message: `Het product is maar maximaal ` + response.data.product.max + `x beschikbaar.`,
+                            type: 'is-danger'
+                        })
+                    } else {
+                        this.$store.commit('addToCart', response.data.product);
+                        this.product.amount++; 
+                    }
                 }
             })
             .catch(error => {
                 console.log(error);
             })
-            this.product.amount++; 
         },
         async minProduct() {
             await this.$store.commit('minCart', this.product, this.ind);

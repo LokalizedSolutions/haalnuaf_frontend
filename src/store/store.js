@@ -34,10 +34,18 @@ const store = new Vuex.Store({
         },
         addToCart(state, item) {
             let found = state.cart.find(x => x.name == item.name);
-
             if (found) {
-                found.amount ++;
-                found.totalPrice = found.amount * found.price;
+                if(found.max === found.amount) {
+                    /*this.$buefy.toast.open({
+                        duration: 2000,
+                        message: `Dat product is uitverkocht.`,
+                        type: 'is-danger'
+                    })*/
+                    console.log('Uitverkocht');
+                } else {
+                    found.amount ++;
+                    found.totalPrice = found.amount * found.price;
+                }   
             } else {
                 state.cart.push(item);
 
