@@ -10,6 +10,7 @@ import error from './components/error.vue';
 import login from './components/login.vue';
 import passwordforget from './components/passwordforget.vue';
 import signup from './components/signup.vue';
+import reset from './components/reset.vue';
 // Dashboard
 import dashboard from './components/dashboard/dashboard.vue';
 import products from './components/dashboard/products.vue';
@@ -143,6 +144,14 @@ const routes = [
     meta: {
       requiresGuest: true
     } 
+  },
+  {
+    path: '/reset/:id',
+    name: 'reset',
+    component: reset,
+    meta: {
+      requiresGuest: true
+    }
   },
   // Store
   {
