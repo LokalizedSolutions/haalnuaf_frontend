@@ -33,16 +33,19 @@
                 </div>
             </div>
         </div>
+        <foot/>
     </div>
 </template>
 
 <script>
 import authnavbar from './auth_navbar.vue'
+import foot from './main/footer.vue'
 
 export default {
     name: "passwordforget",
     components: {
-        authnavbar
+        authnavbar,
+        foot
     },
     data() {
         return {

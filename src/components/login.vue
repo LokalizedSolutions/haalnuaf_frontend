@@ -41,17 +41,20 @@
                 </div>
             </div>
         </div>
+        <foot/>
     </div>
 </template>
 
 <script>
 import authnavbar from './auth_navbar.vue'
+import foot from './main/footer.vue'
 import { mapMutations } from 'vuex'
 
 export default {
     name: "login",
     components: {
-        authnavbar
+        authnavbar,
+        foot
     },
     data() {
         return {
