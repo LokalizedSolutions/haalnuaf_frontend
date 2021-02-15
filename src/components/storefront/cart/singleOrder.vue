@@ -10,7 +10,7 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <p>€ {{ product.totalPrice }}</p>
+                <p>€ {{ totalPriceProduct }}</p>
             </div>
             <div class="level-item">
                 <b-button type="is-primary"
@@ -80,6 +80,17 @@ export default {
             .catch(error => {
                 console.log(error);
             })
+        }
+    },
+    computed: {
+        totalPriceProduct() {
+            let total = 0;
+
+            for (let item of this.$store.state.cart) {
+                total = item.price * item.amount;
+            }
+
+            return total.toFixed(2);
         }
     }
 }
