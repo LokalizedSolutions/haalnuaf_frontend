@@ -65,7 +65,8 @@ export default {
         // Get total price
         getTotalPrice() {
             this.amount = Number.parseFloat(this.amount).toFixed();
-            return this.price * this.amount;
+            this.totalPrice = this.price * this.amount;
+            return this.totalPrice.toFixed(2);
         },
         // changeAmount
         changeAmount() {
