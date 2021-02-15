@@ -12,7 +12,7 @@
                         <strong>Nummer: </strong>{{ order.contactPhone }}
                     </div>
                     <div>
-                        <strong>Totaalprijs: </strong>€ {{ order.price }}
+                        <strong>Totaalprijs: </strong>€ {{ order.price.toFixed(2) }}
                     </div>
                     <div>
                         <strong>Order ID: </strong> {{ order.id.split('-')[0]}}
