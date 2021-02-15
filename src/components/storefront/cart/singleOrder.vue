@@ -4,7 +4,8 @@
             <div class="level-item">
                 <div>
                     <h1 class="title is-6">{{ product.name }}</h1>
-                    <p>{{ product.description.slice(0, 25) }}</p>
+                    <p v-if="product.description.length > 24">{{ product.description.slice(0, 25) }}...</p>
+                    <p v-else>{{ product.description }}</p>
                 </div>
             </div>
         </div>
