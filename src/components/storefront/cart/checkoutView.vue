@@ -82,7 +82,7 @@ export default {
             .then(response => {
                 localStorage.removeItem('cart');
                 localStorage.removeItem('cartCount');
-                this.$router.push('/s/' + this.$route.params.id);
+                this.$router.push({ name: 'success' });
             })
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
