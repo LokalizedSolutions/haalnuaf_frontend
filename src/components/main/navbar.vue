@@ -24,7 +24,7 @@
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
-            <b-button tag="router-link" :to="{ name: 'signup'}" class="button is-primary" disabled>
+            <b-button tag="router-link" :to="{ name: 'signup'}" class="button is-primary">
               <strong>Maak uw webshop</strong>
             </b-button>
             <b-button tag="router-link" :to="{ name: 'login' }" class="button is-white">

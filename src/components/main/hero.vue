@@ -9,7 +9,7 @@
             <p class="subtitle">
                 {{ description }}
             </p>
-            <b-button tag="router-link" :to="{ name : 'signup' }" type="is-primary" disabled>
+            <b-button tag="router-link" :to="{ name : 'signup' }" type="is-primary">
                 <strong>Start nu gratis</strong>
             </b-button>
         </div>
