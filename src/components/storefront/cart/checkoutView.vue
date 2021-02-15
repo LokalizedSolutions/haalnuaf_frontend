@@ -90,6 +90,7 @@ export default {
                 localStorage.removeItem('cart');
                 localStorage.removeItem('cartCount');
                 this.$router.push({ name: 'success' });
+                this.$router.go();
             })
             .catch(error => {
                 this.back_errors.push('Bericht: ' + error.response.data.msg);
