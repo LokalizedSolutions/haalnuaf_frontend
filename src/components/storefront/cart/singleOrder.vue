@@ -10,6 +10,9 @@
         </div>
         <div class="level-right">
             <div class="level-item">
+                <p>Aantal: {{ product.amount }}</p>
+            </div>
+            <div class="level-item">
                 <p>€ {{ totalPriceProduct }}</p>
             </div>
             <div class="level-item">
