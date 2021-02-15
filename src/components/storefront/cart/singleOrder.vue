@@ -13,6 +13,10 @@
                 <p>€ {{ totalPriceProduct }}</p>
             </div>
             <div class="level-item">
+                <b-button type="is-white"
+                icon-right="minus" icon-pack="fas" @click="minProduct()"/>
+            </div>
+            <div class="level-item">
                 <b-button type="is-primary"
                 icon-right="plus" icon-pack="fas" @click="addProduct()"/>
             </div>
@@ -80,15 +84,14 @@ export default {
             .catch(error => {
                 console.log(error);
             })
+            this.product.amount++; 
         }
     },
     computed: {
         totalPriceProduct() {
             let total = 0;
 
-            for (let item of this.$store.state.cart) {
-                total = item.price * item.amount;
-            }
+            total = this.product.amount * this.product.price;
 
             return total.toFixed(2);
         }
