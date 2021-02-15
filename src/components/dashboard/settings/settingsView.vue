@@ -128,7 +128,7 @@ export default {
             await this.$http.post(process.env.VUE_APP_API + "/users/" + localStorage.getItem('id') + "/delete", { key: this.key, time: this.date })
             // eslint-disable-next-line no-unused-vars
             .then(async response => {
-                // nothing
+                this.$router.push('/');
             })
             .catch(error => {
                 this.back_errors_delete.push('Bericht: ' + error.response.data.msg);
@@ -136,6 +136,7 @@ export default {
             localStorage.removeItem('token');
             await localStorage.removeItem('id');
             this.$router.go(); 
+            this.$router.push('/');
         }
     },
     mounted() {

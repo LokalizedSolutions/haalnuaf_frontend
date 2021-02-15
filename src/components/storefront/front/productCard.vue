@@ -7,7 +7,7 @@
                 <img :src="'https://cdn.lokalized.nl/haalnuaf-images/' + img" alt="Placeholder image">
                 </figure>
                 <span class="tag is-primary customtag is-medium">
-                    € {{ price }}
+                    € {{ price.toFixed(2) }}
                 </span>
             </div>
             <!--content-->
