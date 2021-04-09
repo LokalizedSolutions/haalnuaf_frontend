@@ -80,7 +80,7 @@
 
                         Wilt u gebruik maken van uw recht op bezwaar en/of recht op gegevensoverdraagbaarheid of heeft u andere vragen/opmerkingen over de gegevensverwerking, stuur dan een gespecificeerd verzoek naar <a href="mailto:gegevens@lokalized.nl">gegevens@lokalized.nl</a>. 
 
-                        Om er zeker van te zijn dat het verzoek tot inzage door u is gedaan, vragen wij u een kopie van uw identiteitsbewijs bij het verzoek mee te sturen. Maak in deze kopie uw pasfoto, MRZ (machine readable zone, de strook met nummers onderaan het paspoort), paspoortnummer en Burgerservicenummer (BSN) zwart. Dit ter bescherming van uw privacy. haalnuaf.nl zal zo snel mogelijk, maar in ieder geval binnen vier weken, op uw verzoek reageren.
+                        haalnuaf.nl zal zo snel mogelijk, maar in ieder geval binnen vier weken, op uw verzoek reageren.
 
                         haalnuaf.nl wil u er tevens op wijzen dat u de mogelijkheid hebt om een klacht in te dienen bij de nationale toezichthouder, de Autoriteit Persoonsgegevens. Dat kan via de volgende link: <a href="https://autoriteitpersoonsgegevens.nl/nl/contact-met-de-autoriteit-persoonsgegevens/tip-ons">Autoriteit Persoonsgegevens.</a>
                         </div>
