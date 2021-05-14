@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "buefy": "^0.9.4",
+    "buefy": "^0.9.7",
     "core-js": "^3.6.5",
     "crypto": "^1.0.1",
     "vee-validate": "^2.2.15",
